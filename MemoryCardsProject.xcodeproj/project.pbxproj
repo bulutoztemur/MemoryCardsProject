@@ -19,7 +19,6 @@
 		88F09D6E26C52EB800B56A3F /* RecordsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D6D26C52EB800B56A3F /* RecordsVC.swift */; };
 		88F09D7326C5304100B56A3F /* ShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D7226C5304100B56A3F /* ShareVC.swift */; };
 		88F09D7826C5332200B56A3F /* CustomCardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D7726C5332200B56A3F /* CustomCardsVC.swift */; };
-		88F09DA826C66EDB00B56A3F /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09DA726C66EDB00B56A3F /* BaseNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +57,6 @@
 		88F09D6D26C52EB800B56A3F /* RecordsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsVC.swift; sourceTree = "<group>"; };
 		88F09D7226C5304100B56A3F /* ShareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVC.swift; sourceTree = "<group>"; };
 		88F09D7726C5332200B56A3F /* CustomCardsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardsVC.swift; sourceTree = "<group>"; };
-		88F09DA726C66EDB00B56A3F /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +118,6 @@
 				88F09D6D26C52EB800B56A3F /* RecordsVC.swift */,
 				88F09D7226C5304100B56A3F /* ShareVC.swift */,
 				88F09D7726C5332200B56A3F /* CustomCardsVC.swift */,
-				88F09DA726C66EDB00B56A3F /* BaseNavigationController.swift */,
 			);
 			path = MemoryCardsProject;
 			sourceTree = "<group>";
@@ -277,7 +274,6 @@
 				88F09D2726C39B7400B56A3F /* AppDelegate.swift in Sources */,
 				88F09D6026C3E98E00B56A3F /* SideMenuVC.swift in Sources */,
 				88F09D6E26C52EB800B56A3F /* RecordsVC.swift in Sources */,
-				88F09DA826C66EDB00B56A3F /* BaseNavigationController.swift in Sources */,
 				88F09D2926C39B7400B56A3F /* SceneDelegate.swift in Sources */,
 				88F09D6926C52E8C00B56A3F /* CategoriesVC.swift in Sources */,
 				88F09D7826C5332200B56A3F /* CustomCardsVC.swift in Sources */,
