@@ -14,11 +14,13 @@
 		88F09D3326C39B7700B56A3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F09D3126C39B7700B56A3F /* LaunchScreen.storyboard */; };
 		88F09D3E26C39B7700B56A3F /* MemoryCardsProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D3D26C39B7700B56A3F /* MemoryCardsProjectTests.swift */; };
 		88F09D4926C39B7800B56A3F /* MemoryCardsProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D4826C39B7800B56A3F /* MemoryCardsProjectUITests.swift */; };
-		88F09D6026C3E98E00B56A3F /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D5F26C3E98E00B56A3F /* SideMenuVC.swift */; };
 		88F09D6926C52E8C00B56A3F /* CategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D6826C52E8C00B56A3F /* CategoriesVC.swift */; };
 		88F09D6E26C52EB800B56A3F /* RecordsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D6D26C52EB800B56A3F /* RecordsVC.swift */; };
 		88F09D7326C5304100B56A3F /* ShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D7226C5304100B56A3F /* ShareVC.swift */; };
 		88F09D7826C5332200B56A3F /* CustomCardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D7726C5332200B56A3F /* CustomCardsVC.swift */; };
+		88F09DB026C66FEE00B56A3F /* BaseNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09DAF26C66FEE00B56A3F /* BaseNavigationVC.swift */; };
+		88F09DCA26C936A100B56A3F /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09DC926C936A100B56A3F /* UIViewController+Extension.swift */; };
+		88F09DCF26C9445200B56A3F /* ProfileSideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09DCE26C9445200B56A3F /* ProfileSideMenuVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,11 +54,13 @@
 		88F09D4426C39B7800B56A3F /* MemoryCardsProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemoryCardsProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F09D4826C39B7800B56A3F /* MemoryCardsProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCardsProjectUITests.swift; sourceTree = "<group>"; };
 		88F09D4A26C39B7800B56A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88F09D5F26C3E98E00B56A3F /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		88F09D6826C52E8C00B56A3F /* CategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesVC.swift; sourceTree = "<group>"; };
 		88F09D6D26C52EB800B56A3F /* RecordsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsVC.swift; sourceTree = "<group>"; };
 		88F09D7226C5304100B56A3F /* ShareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVC.swift; sourceTree = "<group>"; };
 		88F09D7726C5332200B56A3F /* CustomCardsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardsVC.swift; sourceTree = "<group>"; };
+		88F09DAF26C66FEE00B56A3F /* BaseNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationVC.swift; sourceTree = "<group>"; };
+		88F09DC926C936A100B56A3F /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		88F09DCE26C9445200B56A3F /* ProfileSideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSideMenuVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,17 +111,13 @@
 		88F09D2526C39B7400B56A3F /* MemoryCardsProject */ = {
 			isa = PBXGroup;
 			children = (
+				88F09DD826C96BBE00B56A3F /* Application */,
+				88F09DD326C96B9D00B56A3F /* Common */,
 				88F09D2626C39B7400B56A3F /* AppDelegate.swift */,
 				88F09D2826C39B7400B56A3F /* SceneDelegate.swift */,
-				88F09D2A26C39B7400B56A3F /* ContainerTabBarController.swift */,
 				88F09D2F26C39B7700B56A3F /* Assets.xcassets */,
 				88F09D3126C39B7700B56A3F /* LaunchScreen.storyboard */,
 				88F09D3426C39B7700B56A3F /* Info.plist */,
-				88F09D5F26C3E98E00B56A3F /* SideMenuVC.swift */,
-				88F09D6826C52E8C00B56A3F /* CategoriesVC.swift */,
-				88F09D6D26C52EB800B56A3F /* RecordsVC.swift */,
-				88F09D7226C5304100B56A3F /* ShareVC.swift */,
-				88F09D7726C5332200B56A3F /* CustomCardsVC.swift */,
 			);
 			path = MemoryCardsProject;
 			sourceTree = "<group>";
@@ -138,6 +138,36 @@
 				88F09D4A26C39B7800B56A3F /* Info.plist */,
 			);
 			path = MemoryCardsProjectUITests;
+			sourceTree = "<group>";
+		};
+		88F09DD326C96B9D00B56A3F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				88F09DD426C96BA500B56A3F /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		88F09DD426C96BA500B56A3F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				88F09DC926C936A100B56A3F /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		88F09DD826C96BBE00B56A3F /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				88F09DAF26C66FEE00B56A3F /* BaseNavigationVC.swift */,
+				88F09D2A26C39B7400B56A3F /* ContainerTabBarController.swift */,
+				88F09D6826C52E8C00B56A3F /* CategoriesVC.swift */,
+				88F09D6D26C52EB800B56A3F /* RecordsVC.swift */,
+				88F09D7226C5304100B56A3F /* ShareVC.swift */,
+				88F09D7726C5332200B56A3F /* CustomCardsVC.swift */,
+				88F09DCE26C9445200B56A3F /* ProfileSideMenuVC.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,10 +302,12 @@
 				88F09D2B26C39B7400B56A3F /* ContainerTabBarController.swift in Sources */,
 				88F09D7326C5304100B56A3F /* ShareVC.swift in Sources */,
 				88F09D2726C39B7400B56A3F /* AppDelegate.swift in Sources */,
-				88F09D6026C3E98E00B56A3F /* SideMenuVC.swift in Sources */,
 				88F09D6E26C52EB800B56A3F /* RecordsVC.swift in Sources */,
 				88F09D2926C39B7400B56A3F /* SceneDelegate.swift in Sources */,
 				88F09D6926C52E8C00B56A3F /* CategoriesVC.swift in Sources */,
+				88F09DB026C66FEE00B56A3F /* BaseNavigationVC.swift in Sources */,
+				88F09DCF26C9445200B56A3F /* ProfileSideMenuVC.swift in Sources */,
+				88F09DCA26C936A100B56A3F /* UIViewController+Extension.swift in Sources */,
 				88F09D7826C5332200B56A3F /* CustomCardsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

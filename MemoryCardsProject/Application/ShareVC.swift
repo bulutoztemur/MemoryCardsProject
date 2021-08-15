@@ -11,6 +11,6 @@ class ShareVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .magenta
+        view.backgroundColor = .systemPink
     }
 }
