@@ -19,14 +19,14 @@ class ContainerTabBarController: UITabBarController {
     // Override selectedViewController for User initiated changes
     override var selectedViewController: UIViewController? {
         didSet {
-            sideMenuState = .close
+            if sideMenuState == .open {
+                hideProfileSideMenu()
+            }
         }
     }
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGreen
         
         self.setViewControllers(setupViewControllers(), animated: true)
         self.tabBar.tintColor = .systemGreen
@@ -78,13 +78,23 @@ class ContainerTabBarController: UITabBarController {
     @objc func didTapProfileButton() {
         switch sideMenuState {
         case .close:
-            selectedViewController?.add(profileMenuVC)
-            sideMenuState = .open
+            showProfileSideMenu()
         case .open:
-            profileMenuVC.remove()
-            sideMenuState = .close
+            hideProfileSideMenu()
         }
     }
+    
+    private func showProfileSideMenu() {
+        selectedViewController?.add(profileMenuVC)
+        sideMenuState = .open
+    }
+    
+    private func hideProfileSideMenu() {
+        profileMenuVC.remove()
+        sideMenuState = .close
+    }
+
+    
 
 }
 

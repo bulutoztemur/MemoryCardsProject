@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88202A7226CA5A7C0079234F /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202A7126CA5A7C0079234F /* CategoryView.swift */; };
 		88F09D2726C39B7400B56A3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D2626C39B7400B56A3F /* AppDelegate.swift */; };
 		88F09D2926C39B7400B56A3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D2826C39B7400B56A3F /* SceneDelegate.swift */; };
 		88F09D2B26C39B7400B56A3F /* ContainerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D2A26C39B7400B56A3F /* ContainerTabBarController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		88202A7126CA5A7C0079234F /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		88F09D2326C39B7400B56A3F /* MemoryCardsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryCardsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F09D2626C39B7400B56A3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88F09D2826C39B7400B56A3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		88202A7026CA5A550079234F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				88202A7126CA5A7C0079234F /* CategoryView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		88F09D1A26C39B7400B56A3F = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +153,7 @@
 		88F09DD326C96B9D00B56A3F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				88202A7026CA5A550079234F /* Components */,
 				88F09DD426C96BA500B56A3F /* Extensions */,
 			);
 			path = Common;
@@ -304,6 +315,7 @@
 				88F09D2726C39B7400B56A3F /* AppDelegate.swift in Sources */,
 				88F09D6E26C52EB800B56A3F /* RecordsVC.swift in Sources */,
 				88F09D2926C39B7400B56A3F /* SceneDelegate.swift in Sources */,
+				88202A7226CA5A7C0079234F /* CategoryView.swift in Sources */,
 				88F09D6926C52E8C00B56A3F /* CategoriesVC.swift in Sources */,
 				88F09DB026C66FEE00B56A3F /* BaseNavigationVC.swift in Sources */,
 				88F09DCF26C9445200B56A3F /* ProfileSideMenuVC.swift in Sources */,
