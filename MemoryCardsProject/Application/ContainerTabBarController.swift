@@ -42,9 +42,6 @@ class ContainerTabBarController: UITabBarController {
         profileMenuVC.view.layer.masksToBounds = true
     }
 
-        
-    
-    
     private func setupViewControllers() -> [UIViewController] {
         let categoryVC = CategoriesVC()
         categoryVC.title = "Play"
@@ -93,8 +90,5 @@ class ContainerTabBarController: UITabBarController {
         profileMenuVC.remove()
         sideMenuState = .close
     }
-
-    
-
 }
 
