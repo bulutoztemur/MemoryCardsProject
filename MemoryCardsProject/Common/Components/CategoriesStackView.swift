@@ -22,17 +22,28 @@ class CategoriesStackView: UIStackView {
     
     private func configureView() {
         axis = .vertical
+        spacing = 40
         setCategoryButtons()
         addCategoryButtonsToView()
     }
     
     private func setCategoryButtons() {
-        categoryButtons.append(CategoryButton())
+        categoryButtons.append(CategoryButton(frame: .zero, categoryOne: CategoryEnum.two, categoryTwo: CategoryEnum.three))
+        categoryButtons.append(CategoryButton(frame: .zero, categoryOne: CategoryEnum.three, categoryTwo: CategoryEnum.four))
+        categoryButtons.append(CategoryButton(frame: .zero, categoryOne: CategoryEnum.four, categoryTwo: CategoryEnum.six))
     }
     
     private func addCategoryButtonsToView() {
         for categoryButton in categoryButtons {
+            categoryButton.addTarget(self, action: #selector(categoryButtonTapped), for: .touchUpInside)
             addArrangedSubview(categoryButton)
         }
+    }
+    
+    @objc private func categoryButtonTapped(sender: CategoryButton) {
+        let colorAnimation = CABasicAnimation(keyPath: "backgroundColor")
+        colorAnimation.fromValue = UIColor.gray.cgColor
+        colorAnimation.duration = 1  // animation duration
+        sender.layer.add(colorAnimation, forKey: "ColorPulse")
     }
 }

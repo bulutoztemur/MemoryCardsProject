@@ -16,22 +16,24 @@ class CategoryView: UIStackView {
     }()
     
     var firstNumberImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "two"))
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
     var secondNumberImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "three"))
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, categoryOne: CategoryEnum, categoryTwo: CategoryEnum) {
+        firstNumberImage.image = UIImage(named: categoryOne.info.text)
+        secondNumberImage.image = UIImage(named: categoryTwo.info.text)
         super.init(frame: frame)
         configureView()
     }
-    
+
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

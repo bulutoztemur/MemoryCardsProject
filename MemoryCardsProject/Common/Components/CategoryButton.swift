@@ -9,28 +9,28 @@ import UIKit
 
 class CategoryButton: UIButton {
     
-    let categoryView: CategoryView = {
-       let cv = CategoryView()
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        return cv
-    }()
-
-    override init(frame: CGRect) {
+    let categoryView: CategoryView
+    var category1: CategoryEnum
+    var category2: CategoryEnum
+    
+    init(frame: CGRect, categoryOne: CategoryEnum, categoryTwo: CategoryEnum) {
+        category1 = categoryOne
+        category2 = categoryTwo
+        categoryView = CategoryView(frame: .zero, categoryOne: categoryOne, categoryTwo: categoryTwo)
         super.init(frame: frame)
         configureView()
     }
-    
-    required init?(coder: NSCoder) {
+
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func configureView() {
+
+    func configureView() {
+        categoryView.translatesAutoresizingMaskIntoConstraints = false
         translatesAutoresizingMaskIntoConstraints = false
-        layer.borderWidth = 5
-        layer.cornerRadius = 20
-        layer.borderColor = CGColor.init(red: 0, green: 0, blue: 0, alpha: 1)
-        
+        setBorder()
         addSubview(categoryView)
+        categoryView.isUserInteractionEnabled = false
         setupConstraints()
     }
     
@@ -40,6 +40,13 @@ class CategoryButton: UIButton {
             categoryView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             categoryView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
         ])
+    }
+    
+    private func setBorder() {
+        layer.borderWidth = 5
+        layer.cornerRadius = 20
+        layer.borderColor = UIColor.black.cgColor
+
     }
 
 }

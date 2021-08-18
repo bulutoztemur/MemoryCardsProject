@@ -9,21 +9,25 @@ import UIKit
 
 class CategoriesVC: UIViewController {
     
-    let myButton = CategoryButton()
+    let categoriesStackView: CategoriesStackView = {
+        let csv = CategoriesStackView()
+        csv.translatesAutoresizingMaskIntoConstraints = false
+        return csv
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
         
-        view.addSubview(myButton)
+        view.addSubview(categoriesStackView)
         setupConstraints()
     }
 
     private func setupConstraints() {
         NSLayoutConstraint.activate(
-        [myButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-        myButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-        myButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+        [categoriesStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+         categoriesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+         categoriesStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
     }
     
