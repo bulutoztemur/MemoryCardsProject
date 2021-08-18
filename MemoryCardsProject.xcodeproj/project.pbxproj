@@ -11,6 +11,8 @@
 		88202A7A26CAB0A70079234F /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202A7926CAB0A70079234F /* CategoryButton.swift */; };
 		88202A7F26CAB7090079234F /* CategoriesStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202A7E26CAB7090079234F /* CategoriesStackView.swift */; };
 		88202A8426CB98BE0079234F /* CategoryEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202A8326CB98BE0079234F /* CategoryEnum.swift */; };
+		888CBCB926CD065D00BDAFB2 /* GameBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888CBCB826CD065D00BDAFB2 /* GameBoardVC.swift */; };
+		888CBCC026CD197F00BDAFB2 /* ScoreboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888CBCBF26CD197F00BDAFB2 /* ScoreboardView.swift */; };
 		88F09D2726C39B7400B56A3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D2626C39B7400B56A3F /* AppDelegate.swift */; };
 		88F09D2926C39B7400B56A3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D2826C39B7400B56A3F /* SceneDelegate.swift */; };
 		88F09D2B26C39B7400B56A3F /* ContainerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F09D2A26C39B7400B56A3F /* ContainerTabBarController.swift */; };
@@ -49,6 +51,8 @@
 		88202A7926CAB0A70079234F /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		88202A7E26CAB7090079234F /* CategoriesStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesStackView.swift; sourceTree = "<group>"; };
 		88202A8326CB98BE0079234F /* CategoryEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEnum.swift; sourceTree = "<group>"; };
+		888CBCB826CD065D00BDAFB2 /* GameBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardVC.swift; sourceTree = "<group>"; };
+		888CBCBF26CD197F00BDAFB2 /* ScoreboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardView.swift; sourceTree = "<group>"; };
 		88F09D2326C39B7400B56A3F /* MemoryCardsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryCardsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F09D2626C39B7400B56A3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88F09D2826C39B7400B56A3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,11 +103,20 @@
 		88202A7026CA5A550079234F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				888CBCBD26CD173F00BDAFB2 /* CategoryComponents */,
+				888CBCBF26CD197F00BDAFB2 /* ScoreboardView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		888CBCBD26CD173F00BDAFB2 /* CategoryComponents */ = {
+			isa = PBXGroup;
+			children = (
 				88202A7126CA5A7C0079234F /* CategoryView.swift */,
 				88202A7926CAB0A70079234F /* CategoryButton.swift */,
 				88202A7E26CAB7090079234F /* CategoriesStackView.swift */,
 			);
-			path = Components;
+			path = CategoryComponents;
 			sourceTree = "<group>";
 		};
 		88F09D1A26C39B7400B56A3F = {
@@ -186,6 +199,7 @@
 				88F09D7726C5332200B56A3F /* CustomCardsVC.swift */,
 				88F09DCE26C9445200B56A3F /* ProfileSideMenuVC.swift */,
 				88202A8326CB98BE0079234F /* CategoryEnum.swift */,
+				888CBCB826CD065D00BDAFB2 /* GameBoardVC.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -322,6 +336,7 @@
 				88F09D2B26C39B7400B56A3F /* ContainerTabBarController.swift in Sources */,
 				88F09D7326C5304100B56A3F /* ShareVC.swift in Sources */,
 				88F09D2726C39B7400B56A3F /* AppDelegate.swift in Sources */,
+				888CBCB926CD065D00BDAFB2 /* GameBoardVC.swift in Sources */,
 				88F09D6E26C52EB800B56A3F /* RecordsVC.swift in Sources */,
 				88202A7F26CAB7090079234F /* CategoriesStackView.swift in Sources */,
 				88F09D2926C39B7400B56A3F /* SceneDelegate.swift in Sources */,
@@ -332,6 +347,7 @@
 				88F09DCF26C9445200B56A3F /* ProfileSideMenuVC.swift in Sources */,
 				88202A7A26CAB0A70079234F /* CategoryButton.swift in Sources */,
 				88F09DCA26C936A100B56A3F /* UIViewController+Extension.swift in Sources */,
+				888CBCC026CD197F00BDAFB2 /* ScoreboardView.swift in Sources */,
 				88F09D7826C5332200B56A3F /* CustomCardsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
