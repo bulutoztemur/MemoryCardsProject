@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoriesVC: UIViewController {
+class CategoriesVC: UIViewController, CategoryTappedProtocol {
     
     let categoriesStackView: CategoriesStackView = {
         let csv = CategoriesStackView()
@@ -19,6 +19,7 @@ class CategoriesVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
         
+        categoriesStackView.delegate = self
         view.addSubview(categoriesStackView)
         setupConstraints()
     }
@@ -31,6 +32,9 @@ class CategoriesVC: UIViewController {
         ])
     }
     
-
-
+    func categoryButtonTapped(categoryOne: CategoryEnum, categoryTwo: CategoryEnum) {
+        let vc = GameBoardVC(categoryOne.info.number, categoryTwo.info.number)
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

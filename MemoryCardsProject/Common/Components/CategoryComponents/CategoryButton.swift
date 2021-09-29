@@ -46,7 +46,5 @@ class CategoryButton: UIButton {
         layer.borderWidth = 5
         layer.cornerRadius = 20
         layer.borderColor = UIColor.black.cgColor
-
     }
-
 }

@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol CategoryTappedProtocol {
+    func categoryButtonTapped(categoryOne: CategoryEnum, categoryTwo: CategoryEnum)
+}
+
 class CategoriesStackView: UIStackView {
     
+    var delegate: CategoryTappedProtocol?
     var categoryButtons: [CategoryButton] = []
     
     override init(frame: CGRect) {
@@ -45,5 +50,7 @@ class CategoriesStackView: UIStackView {
         colorAnimation.fromValue = UIColor.gray.cgColor
         colorAnimation.duration = 1  // animation duration
         sender.layer.add(colorAnimation, forKey: "ColorPulse")
+        
+        delegate?.categoryButtonTapped(categoryOne: sender.category1, categoryTwo: sender.category2)
     }
 }

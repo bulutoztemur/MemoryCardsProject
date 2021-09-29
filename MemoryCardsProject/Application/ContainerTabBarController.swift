@@ -16,7 +16,6 @@ class ContainerTabBarController: UITabBarController {
     var sideMenuState: ProfileSideMenuState = .close
     var profileMenuVC = ProfileSideMenuVC()
     
-    // Override selectedViewController for User initiated changes
     override var selectedViewController: UIViewController? {
         didSet {
             if sideMenuState == .open {
@@ -27,7 +26,6 @@ class ContainerTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setViewControllers(setupViewControllers(), animated: true)
         self.tabBar.tintColor = .systemGreen
         self.tabBar.barTintColor = .black
