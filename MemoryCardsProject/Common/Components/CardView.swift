@@ -62,14 +62,12 @@ class CardCell: UICollectionViewCell {
     }
     
     func flipUp(speed: TimeInterval = 0.3) {
-        // Flip up animation
         UIView.transition(from: backImageView, to: frontImageView, duration: speed, options: [.showHideTransitionViews, .transitionFlipFromLeft], completion: nil)
     }
     
     func flipDown(speed: TimeInterval = 0.3, delay: TimeInterval = 0.5) {
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
-            // Flip down animation
             UIView.transition(from: self.frontImageView, to: self.backImageView, duration: speed, options: [.showHideTransitionViews, .transitionFlipFromLeft], completion: nil)
         }
     }

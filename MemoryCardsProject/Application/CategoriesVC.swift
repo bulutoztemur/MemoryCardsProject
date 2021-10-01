@@ -34,7 +34,6 @@ class CategoriesVC: UIViewController, CategoryTappedProtocol {
     
     func categoryButtonTapped(categoryOne: CategoryEnum, categoryTwo: CategoryEnum) {
         let vc = GameBoardVC(categoryOne.info.number, categoryTwo.info.number)
-        
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -11,6 +11,8 @@
 		88202A7A26CAB0A70079234F /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202A7926CAB0A70079234F /* CategoryButton.swift */; };
 		88202A7F26CAB7090079234F /* CategoriesStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202A7E26CAB7090079234F /* CategoriesStackView.swift */; };
 		88202A8426CB98BE0079234F /* CategoryEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202A8326CB98BE0079234F /* CategoryEnum.swift */; };
+		886E98A727050B2300265CF2 /* Copying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E98A627050B2300265CF2 /* Copying.swift */; };
+		886E98AF27050B4000265CF2 /* Array+Copying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E98AE27050B4000265CF2 /* Array+Copying.swift */; };
 		888CBCB926CD065D00BDAFB2 /* GameBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888CBCB826CD065D00BDAFB2 /* GameBoardVC.swift */; };
 		888CBCC026CD197F00BDAFB2 /* ScoreboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888CBCBF26CD197F00BDAFB2 /* ScoreboardView.swift */; };
 		888CBCCF26CD4F3100BDAFB2 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888CBCCE26CD4F3100BDAFB2 /* CardView.swift */; };
@@ -54,6 +56,8 @@
 		88202A7926CAB0A70079234F /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		88202A7E26CAB7090079234F /* CategoriesStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesStackView.swift; sourceTree = "<group>"; };
 		88202A8326CB98BE0079234F /* CategoryEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEnum.swift; sourceTree = "<group>"; };
+		886E98A627050B2300265CF2 /* Copying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copying.swift; sourceTree = "<group>"; };
+		886E98AE27050B4000265CF2 /* Array+Copying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Copying.swift"; sourceTree = "<group>"; };
 		888CBCB826CD065D00BDAFB2 /* GameBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardVC.swift; sourceTree = "<group>"; };
 		888CBCBF26CD197F00BDAFB2 /* ScoreboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardView.swift; sourceTree = "<group>"; };
 		888CBCCE26CD4F3100BDAFB2 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -125,6 +129,14 @@
 			path = GameBoard;
 			sourceTree = "<group>";
 		};
+		886E98A527050B1600265CF2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				886E98A627050B2300265CF2 /* Copying.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		888CBCBD26CD173F00BDAFB2 /* CategoryComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +202,7 @@
 		88F09DD326C96B9D00B56A3F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				886E98A527050B1600265CF2 /* Utils */,
 				88202A7026CA5A550079234F /* Components */,
 				88F09DD426C96BA500B56A3F /* Extensions */,
 			);
@@ -200,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				88F09DC926C936A100B56A3F /* UIViewController+Extension.swift */,
+				886E98AE27050B4000265CF2 /* Array+Copying.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -363,10 +377,12 @@
 				88F09D6926C52E8C00B56A3F /* CategoriesVC.swift in Sources */,
 				88F09DB026C66FEE00B56A3F /* BaseNavigationVC.swift in Sources */,
 				88F09DCF26C9445200B56A3F /* ProfileSideMenuVC.swift in Sources */,
+				886E98AF27050B4000265CF2 /* Array+Copying.swift in Sources */,
 				888CBCD426CECCC000BDAFB2 /* CardsEnum.swift in Sources */,
 				88202A7A26CAB0A70079234F /* CategoryButton.swift in Sources */,
 				88F09DCA26C936A100B56A3F /* UIViewController+Extension.swift in Sources */,
 				888CBCC026CD197F00BDAFB2 /* ScoreboardView.swift in Sources */,
+				886E98A727050B2300265CF2 /* Copying.swift in Sources */,
 				888CBCCF26CD4F3100BDAFB2 /* CardView.swift in Sources */,
 				88F09D7826C5332200B56A3F /* CustomCardsVC.swift in Sources */,
 			);
