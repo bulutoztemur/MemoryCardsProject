@@ -1,0 +1,6 @@
+framework module Pods_MemoryCardsProjectTests {
+  umbrella header "Pods-MemoryCardsProjectTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

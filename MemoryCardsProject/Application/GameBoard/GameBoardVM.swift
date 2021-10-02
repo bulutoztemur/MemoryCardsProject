@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class CardModel: Copying {
     var isFlipped: Bool = false
