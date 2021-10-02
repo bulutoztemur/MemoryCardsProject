@@ -37,8 +37,8 @@ class GameBoardVM {
     }
     
     func cardTapped(card: CardCell, index: Int) {
+        guard !CardCell.cardAnimationInProcess else { return }
         guard !cardsArray[index].isMatched else { return }
-        
         guard flippedCardIndex != index else {
             cardsArray[index].isFlipped ? card.flipDown(delay: 0) : card.flipUp()
             cardsArray[index].isFlipped = !cardsArray[index].isFlipped

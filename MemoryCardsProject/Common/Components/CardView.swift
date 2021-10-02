@@ -9,6 +9,8 @@ import UIKit
 
 class CardCell: UICollectionViewCell {
     
+    static var cardAnimationInProcess = false
+    
     override var reuseIdentifier: String? {
         return "MyCardCell"
     }
@@ -66,9 +68,10 @@ class CardCell: UICollectionViewCell {
     }
     
     func flipDown(speed: TimeInterval = 0.3, delay: TimeInterval = 0.5) {
-        
+        CardCell.cardAnimationInProcess = true
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
             UIView.transition(from: self.frontImageView, to: self.backImageView, duration: speed, options: [.showHideTransitionViews, .transitionFlipFromLeft], completion: nil)
+            CardCell.cardAnimationInProcess = false
         }
     }
 
