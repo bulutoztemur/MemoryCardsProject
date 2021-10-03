@@ -8,12 +8,10 @@
 import Foundation
 
 enum CategoryEnum: Int {
-    case zero, two, three, four, six
+    case two, three, four, six
     
     var info: (number: Int, text: String) {
         switch self {
-        case .zero:
-            return (0, "zero")
         case .two:
             return (2, "two")
         case .three:
