@@ -38,6 +38,7 @@ class GameBoardVC: UIViewController {
         viewModel.generateCards(size: sizeOne * sizeTwo)
         viewModel.sizeOne.accept(sizeOne)
         viewModel.sizeTwo.accept(sizeTwo)
+        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -85,6 +86,7 @@ class GameBoardVC: UIViewController {
     }
 }
 
+// MARK: - CollectionView Deletage Methods
 extension GameBoardVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sizeOne * sizeTwo
@@ -107,3 +109,16 @@ extension GameBoardVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         viewModel.cardTapped(card: cell!, index: indexPath.row)
     }
 }
+
+// MARK: - Bindings
+private extension GameBoardVC {
+    func bind() {
+        viewModel.mismatched
+            .subscribe(onNext: { [weak self] mismatchCount in
+                self?.scoreBoardView.mismatchLabel.text = "Mismatch: \(mismatchCount)"
+            })
+            .disposed(by: viewModel.disposeBag)
+
+    }
+}
+

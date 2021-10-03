@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		88202A7A26CAB0A70079234F /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202A7926CAB0A70079234F /* CategoryButton.swift */; };
 		88202A7F26CAB7090079234F /* CategoriesStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202A7E26CAB7090079234F /* CategoriesStackView.swift */; };
 		88202A8426CB98BE0079234F /* CategoryEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202A8326CB98BE0079234F /* CategoryEnum.swift */; };
+		883B337F2709C4CD00469152 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B337E2709C4CD00469152 /* ResultVC.swift */; };
+		883B33872709C4DA00469152 /* ResultVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B33862709C4DA00469152 /* ResultVM.swift */; };
 		886E98A727050B2300265CF2 /* Copying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E98A627050B2300265CF2 /* Copying.swift */; };
 		886E98AF27050B4000265CF2 /* Array+Copying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E98AE27050B4000265CF2 /* Array+Copying.swift */; };
 		888CBCB926CD065D00BDAFB2 /* GameBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888CBCB826CD065D00BDAFB2 /* GameBoardVC.swift */; };
@@ -66,6 +68,8 @@
 		88202A7926CAB0A70079234F /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		88202A7E26CAB7090079234F /* CategoriesStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesStackView.swift; sourceTree = "<group>"; };
 		88202A8326CB98BE0079234F /* CategoryEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEnum.swift; sourceTree = "<group>"; };
+		883B337E2709C4CD00469152 /* ResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultVC.swift; sourceTree = "<group>"; };
+		883B33862709C4DA00469152 /* ResultVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultVM.swift; sourceTree = "<group>"; };
 		886E98A627050B2300265CF2 /* Copying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copying.swift; sourceTree = "<group>"; };
 		886E98AE27050B4000265CF2 /* Array+Copying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Copying.swift"; sourceTree = "<group>"; };
 		888CBCB826CD065D00BDAFB2 /* GameBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardVC.swift; sourceTree = "<group>"; };
@@ -133,6 +137,15 @@
 				888CBCCE26CD4F3100BDAFB2 /* CardView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		883B337D2709C4C100469152 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				883B337E2709C4CD00469152 /* ResultVC.swift */,
+				883B33862709C4DA00469152 /* ResultVM.swift */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 		886E98A12704FD4D00265CF2 /* GameBoard */ = {
@@ -238,6 +251,7 @@
 		88F09DD826C96BBE00B56A3F /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				883B337D2709C4C100469152 /* Result */,
 				886E98A12704FD4D00265CF2 /* GameBoard */,
 				88F09DAF26C66FEE00B56A3F /* BaseNavigationVC.swift */,
 				88F09D2A26C39B7400B56A3F /* ContainerTabBarController.swift */,
@@ -272,7 +286,6 @@
 				173D191022F5B718BEB018DB /* Pods-MemoryCardsProjectTests.debug.xcconfig */,
 				017E7E0B4C667C80AFA2B7AC /* Pods-MemoryCardsProjectTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -527,11 +540,13 @@
 				88F09DB026C66FEE00B56A3F /* BaseNavigationVC.swift in Sources */,
 				88F09DCF26C9445200B56A3F /* ProfileSideMenuVC.swift in Sources */,
 				886E98AF27050B4000265CF2 /* Array+Copying.swift in Sources */,
+				883B33872709C4DA00469152 /* ResultVM.swift in Sources */,
 				888CBCD426CECCC000BDAFB2 /* CardsEnum.swift in Sources */,
 				88202A7A26CAB0A70079234F /* CategoryButton.swift in Sources */,
 				88F09DCA26C936A100B56A3F /* UIViewController+Extension.swift in Sources */,
 				888CBCC026CD197F00BDAFB2 /* ScoreboardView.swift in Sources */,
 				886E98A727050B2300265CF2 /* Copying.swift in Sources */,
+				883B337F2709C4CD00469152 /* ResultVC.swift in Sources */,
 				888CBCCF26CD4F3100BDAFB2 /* CardView.swift in Sources */,
 				88F09D7826C5332200B56A3F /* CustomCardsVC.swift in Sources */,
 			);

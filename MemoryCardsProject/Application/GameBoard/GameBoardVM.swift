@@ -30,6 +30,7 @@ class GameBoardVM {
     var cardsArray: [CardModel] = []
     weak var prevCard: CardCell? = nil
     var totalMatched = BehaviorRelay<Int>(value: 0)
+    var mismatched = BehaviorRelay<Int>(value: 0)
     var gameFinished = BehaviorRelay<Bool>(value: false)
     var sizeOne = BehaviorRelay<Int?>(value: nil)
     var sizeTwo = BehaviorRelay<Int?>(value: nil)
@@ -56,47 +57,48 @@ class GameBoardVM {
         isFirstCardSelected() ? firstCardSelected(at: index, card) : secondCardSelected(at: index, card)
     }
     
-    func isFirstCardSelected() -> Bool {
+    private func isFirstCardSelected() -> Bool {
         return flippedCardIndex == -1
     }
     
-    func firstCardSelected(at index: Int, _ card: CardCell) {
+    private func firstCardSelected(at index: Int, _ card: CardCell) {
         prevCard = card
         flippedCardIndex = index
     }
     
-    func secondCardSelected(at index: Int, _ card: CardCell) {
+    private func secondCardSelected(at index: Int, _ card: CardCell) {
         checkTwoCardsMatched(at: index, at: flippedCardIndex) ? matched(at: index) : notMatched(at: index, card)
-        turnToFirstState()
+        turnToInitialState()
     }
         
-    func checkTwoCardsMatched(at index: Int, at otherIndex: Int) -> Bool {
+    private func checkTwoCardsMatched(at index: Int, at otherIndex: Int) -> Bool {
         return cardsArray[flippedCardIndex].imageName == cardsArray[index].imageName
     }
     
-    func matched(at index: Int) {
+    private func matched(at index: Int) {
         cardsArray[flippedCardIndex].isMatched = true
         cardsArray[index].isMatched = true
         totalMatched.accept(totalMatched.value + 1)
     }
     
-    func notMatched(at index: Int, _ card: CardCell) {
+    private func notMatched(at index: Int, _ card: CardCell) {
         guard let prevCard = prevCard else { return }
         flipCard(at: index, card)
         flipCard(at: flippedCardIndex, prevCard)
+        mismatched.accept(mismatched.value + 1)
     }
     
-    func turnToFirstState() {
+    private func turnToInitialState() {
         prevCard = nil
         flippedCardIndex = -1
     }
         
-    func flipCard(at index: Int, _ card: CardCell) {
+    private func flipCard(at index: Int, _ card: CardCell) {
         cardsArray[index].isFlipped ? card.flipDown() : card.flipUp()
         cardsArray[index].isFlipped = !cardsArray[index].isFlipped
     }
     
-    func finishGame() {
+    private func finishGame() {
         print("DONE")
     }
 }
@@ -104,7 +106,6 @@ class GameBoardVM {
 // MARK: - Bindings
 private extension GameBoardVM {
     func bind() {
-        
         Observable.combineLatest(totalMatched, sizeOne, sizeTwo)
             .filter { totalMatched, sizeOne, sizeTwo in
                 guard let sizeOne = sizeOne, let sizeTwo = sizeTwo else { return false }
@@ -114,7 +115,5 @@ private extension GameBoardVM {
                 self?.finishGame()
             })
             .disposed(by: disposeBag)
-            
-        
     }
 }

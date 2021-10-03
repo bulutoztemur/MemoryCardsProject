@@ -24,7 +24,7 @@ class ScoreboardView: UIView {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "Mistake: 0"
         lbl.font = UIFont(name:"HelveticaNeue-Medium", size: 16.0)
-        lbl.textColor = .systemRed
+        lbl.textColor = UIColor(red: 220 / 255, green: 0, blue: 0, alpha: 1)
         return lbl
     }()
     
