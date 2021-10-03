@@ -12,7 +12,7 @@ class GameBoardVC: UIViewController {
     var sizeOne: Int
     var sizeTwo: Int
     let screenWidth = UIScreen.main.bounds.size.width
-    let viewModel = GameBoardVM()
+    let viewModel = GameBoardVM() 
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -36,6 +36,8 @@ class GameBoardVC: UIViewController {
         sizeTwo = category2
         super.init(nibName: nil, bundle: nil)
         viewModel.generateCards(size: sizeOne * sizeTwo)
+        viewModel.sizeOne.accept(sizeOne)
+        viewModel.sizeTwo.accept(sizeTwo)
     }
     
     required init?(coder: NSCoder) {

@@ -67,7 +67,7 @@ class ScoreboardView: UIView {
         
         // Update the label
         let seconds: Double = Double(milliseconds) / 1000.0
-        timerLabel.text = String(format: "Elapsed Time: %.2f", seconds)
+        timerLabel.text = String(format: "Time: %.2f", seconds)
     }
     
     private func stopTimer() {
