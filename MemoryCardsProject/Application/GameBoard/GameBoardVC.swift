@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-class GameBoardVC: UIViewController {
+class GameBoardVC: BaseVC {
     
     var sizeOne: Int
     var sizeTwo: Int
@@ -51,13 +53,34 @@ class GameBoardVC: UIViewController {
         
         view.addSubview(collectionView)
         view.addSubview(scoreBoardView)
-        customizeNavBar()
+        self.navigationItem.leftBarButtonItem = createLeftBarButton()
         setupConstraints()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        revertCustomizedNavBar()
+    func createLeftBarButton() -> UIBarButtonItem {
+        let image = UIImage(named: "back")
+        let button = UIButton(type: .custom)
+        button.setImage(image, for: .normal)
+        button.setTitle("Back", for: .normal)
+        button.sizeToFit()
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+        button.setTitleColor(.systemGreen, for: .normal)
+        button.addTarget(self, action: #selector(showConfirmationAlert), for: .touchUpInside)
+        return UIBarButtonItem(customView: button)
+    }
+    
+    @objc func showConfirmationAlert() {
+        let alert = UIAlertController(title: "Confirmation", message: "Are you sure you want to quit?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "YES", style: .default){_ in
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        let noAction = UIAlertAction(title: "NO", style: .default, handler: nil)
+
+        alert.addAction(okAction)
+        alert.addAction(noAction)
+
+        present(alert, animated: true, completion: nil)
     }
 
     private func setupConstraints() {
@@ -73,16 +96,15 @@ class GameBoardVC: UIViewController {
         ])
     }
     
-    private func customizeNavBar() {
-        navigationController?.navigationBar.tintColor = .systemGreen
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = .black
+    deinit {
+        print("DEINIT")
     }
     
-    private func revertCustomizedNavBar() {
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.barTintColor = .clear
-
+    private func finishGame() {
+        scoreBoardView.stopTimer()
+        
+        let vc = ResultVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -118,7 +140,16 @@ private extension GameBoardVC {
                 self?.scoreBoardView.mismatchLabel.text = "Mismatch: \(mismatchCount)"
             })
             .disposed(by: viewModel.disposeBag)
-
+        
+        Observable.combineLatest(viewModel.totalMatched, viewModel.sizeOne, viewModel.sizeTwo)
+            .filter { totalMatched, sizeOne, sizeTwo in
+                guard let sizeOne = sizeOne, let sizeTwo = sizeTwo else { return false }
+                return totalMatched == sizeOne * sizeTwo / 2
+            }
+            .subscribe(onNext: { [weak self] _ in
+                self?.finishGame()
+            })
+            .disposed(by: viewModel.disposeBag)
     }
 }
 

@@ -36,10 +36,6 @@ class GameBoardVM {
     var sizeTwo = BehaviorRelay<Int?>(value: nil)
     let disposeBag = DisposeBag()
     
-    init() {
-        bind()
-    }
-    
     func generateCards(size: Int) {
         for card in CardsEnum.allCases where cardsArray.count < size/2 {
             cardsArray.append(CardModel(image: card.rawValue))
@@ -96,24 +92,5 @@ class GameBoardVM {
     private func flipCard(at index: Int, _ card: CardCell) {
         cardsArray[index].isFlipped ? card.flipDown() : card.flipUp()
         cardsArray[index].isFlipped = !cardsArray[index].isFlipped
-    }
-    
-    private func finishGame() {
-        print("DONE")
-    }
-}
-
-// MARK: - Bindings
-private extension GameBoardVM {
-    func bind() {
-        Observable.combineLatest(totalMatched, sizeOne, sizeTwo)
-            .filter { totalMatched, sizeOne, sizeTwo in
-                guard let sizeOne = sizeOne, let sizeTwo = sizeTwo else { return false }
-                return totalMatched == sizeOne * sizeTwo / 2
-            }
-            .subscribe(onNext: { [weak self] _ in
-                self?.finishGame()
-            })
-            .disposed(by: disposeBag)
-    }
+    }    
 }

@@ -62,17 +62,12 @@ class ScoreboardView: UIView {
     }
     
     @objc func timerFired() {
-        // Decrement the counter
         milliseconds += 1
-        
-        // Update the label
-        let seconds: Double = Double(milliseconds) / 1000.0
-        timerLabel.text = String(format: "Time: %.2f", seconds)
+        timerLabel.text =  milliseconds.stringFromTimeInterval()
     }
     
-    private func stopTimer() {
+    func stopTimer() {
         timer?.invalidate()
     }
-    
-
 }
+
