@@ -14,7 +14,7 @@ class CategoriesVC: UIViewController, CategoryTappedProtocol {
         csv.translatesAutoresizingMaskIntoConstraints = false
         return csv
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
@@ -23,12 +23,12 @@ class CategoriesVC: UIViewController, CategoryTappedProtocol {
         view.addSubview(categoriesStackView)
         setupConstraints()
     }
-
+    
     private func setupConstraints() {
-        NSLayoutConstraint.activate(
-        [categoriesStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-         categoriesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-         categoriesStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+        NSLayoutConstraint.activate([
+            categoriesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            categoriesStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            categoriesStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     

@@ -22,14 +22,8 @@ class ResultVC: BaseVC {
         view.addSubview(resultView)
         
         NSLayoutConstraint.activate([
-//            resultView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            resultView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            resultView.topAnchor.constraint(equalTo: view.topAnchor),
-//            resultView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
             resultView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
             resultView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
         ])
 
     }

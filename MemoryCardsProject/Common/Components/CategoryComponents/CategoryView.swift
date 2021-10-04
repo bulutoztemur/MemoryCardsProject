@@ -7,7 +7,16 @@
 
 import UIKit
 
-class CategoryView: UIStackView {
+class CategoryView: UIView {
+        
+    var contentStack: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.distribution = .equalCentering
+        stack.alignment = .center
+        stack.spacing = 20
+        return stack
+    }()
 
     var xImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "x"))
@@ -39,24 +48,35 @@ class CategoryView: UIStackView {
     }
 
     private func configureView() {
-        distribution = .equalCentering
-        alignment = .center
-        spacing = 20
-        addArrangedSubview(firstNumberImage)
-        addArrangedSubview(xImage)
-        addArrangedSubview(secondNumberImage)
+        contentStack.addArrangedSubview(firstNumberImage)
+        contentStack.addArrangedSubview(xImage)
+        contentStack.addArrangedSubview(secondNumberImage)
+        addSubview(contentStack)
         setupConstraints()
+        setBorder()
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            firstNumberImage.widthAnchor.constraint(equalToConstant: 80),
+            firstNumberImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/4),
             firstNumberImage.widthAnchor.constraint(equalTo: firstNumberImage.heightAnchor),
-            xImage.widthAnchor.constraint(equalToConstant: 40),
+            xImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/8),
             xImage.widthAnchor.constraint(equalTo: xImage.heightAnchor),
-            secondNumberImage.widthAnchor.constraint(equalToConstant: 80),
-            secondNumberImage.widthAnchor.constraint(equalTo: secondNumberImage.heightAnchor)
+            secondNumberImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/4),
+            secondNumberImage.widthAnchor.constraint(equalTo: secondNumberImage.heightAnchor),
+            
+            contentStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            contentStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            contentStack.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            contentStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
         ])
     }
+    
+    private func setBorder() {
+        layer.borderWidth = 5
+        layer.cornerRadius = 20
+        layer.borderColor = UIColor.black.cgColor
+    }
+
 
 }

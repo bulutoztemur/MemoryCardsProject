@@ -28,23 +28,17 @@ class CategoryButton: UIButton {
     func configureView() {
         categoryView.translatesAutoresizingMaskIntoConstraints = false
         translatesAutoresizingMaskIntoConstraints = false
-        setBorder()
         addSubview(categoryView)
         categoryView.isUserInteractionEnabled = false
         setupConstraints()
     }
     
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            categoryView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            categoryView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            categoryView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+        NSLayoutConstraint.activate([            
+            categoryView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            categoryView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            categoryView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            categoryView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
         ])
-    }
-    
-    private func setBorder() {
-        layer.borderWidth = 5
-        layer.cornerRadius = 20
-        layer.borderColor = UIColor.black.cgColor
     }
 }

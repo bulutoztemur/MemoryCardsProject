@@ -48,9 +48,8 @@ class CategoriesStackView: UIStackView {
     @objc private func categoryButtonTapped(sender: CategoryButton) {
         let colorAnimation = CABasicAnimation(keyPath: "backgroundColor")
         colorAnimation.fromValue = UIColor.gray.cgColor
-        colorAnimation.duration = 1  // animation duration
+        colorAnimation.duration = 1
         sender.layer.add(colorAnimation, forKey: "ColorPulse")
-        
         delegate?.categoryButtonTapped(categoryOne: sender.category1, categoryTwo: sender.category2)
     }
 }
