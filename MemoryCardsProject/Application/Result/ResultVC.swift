@@ -18,29 +18,28 @@ class ResultVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
-        self.navigationItem.leftBarButtonItem = createLeftBarButton()
+        navigationItem.viewControllerTag = .popToRootVC
         view.addSubview(resultView)
         
         NSLayoutConstraint.activate([
-            resultView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
-            resultView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            resultView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            resultView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+
         ])
+        
+        NSLayoutConstraint(item: resultView,
+                           attribute: .centerY,
+                           relatedBy: .equal,
+                           toItem: view,
+                           attribute: .centerY,
+                           multiplier: 0.8,
+                           constant: 0)
+            .isActive = true
+        
+        
 
     }
-    
-    func createLeftBarButton() -> UIBarButtonItem {
-        let image = UIImage(named: "back")
-        let button = UIButton(type: .custom)
-        button.setImage(image, for: .normal)
-        button.setTitle("Back", for: .normal)
-        button.sizeToFit()
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
-        button.setTitleColor(.systemGreen, for: .normal)
-        button.addTarget(self, action: #selector(showConfirmationAlert), for: .touchUpInside)
-        return UIBarButtonItem(customView: button)
-    }
-    
+        
     @objc func showConfirmationAlert() {
         navigationController?.popToRootViewController(animated: true)
     }

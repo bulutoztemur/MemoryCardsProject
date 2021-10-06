@@ -53,36 +53,10 @@ class GameBoardVC: BaseVC {
         
         view.addSubview(collectionView)
         view.addSubview(scoreBoardView)
-        self.navigationItem.leftBarButtonItem = createLeftBarButton()
+        self.navigationItem.viewControllerTag = .askUserForConfirmation
         setupConstraints()
     }
-    
-    func createLeftBarButton() -> UIBarButtonItem {
-        let image = UIImage(named: "back")
-        let button = UIButton(type: .custom)
-        button.setImage(image, for: .normal)
-        button.setTitle("Back", for: .normal)
-        button.sizeToFit()
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
-        button.setTitleColor(.systemGreen, for: .normal)
-        button.addTarget(self, action: #selector(showConfirmationAlert), for: .touchUpInside)
-        return UIBarButtonItem(customView: button)
-    }
-    
-    @objc func showConfirmationAlert() {
-        let alert = UIAlertController(title: "Confirmation", message: "Are you sure you want to quit?", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "YES", style: .default){_ in
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-        let noAction = UIAlertAction(title: "NO", style: .default, handler: nil)
-
-        alert.addAction(okAction)
-        alert.addAction(noAction)
-
-        present(alert, animated: true, completion: nil)
-    }
-
+        
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             scoreBoardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
@@ -94,10 +68,6 @@ class GameBoardVC: BaseVC {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
-    }
-    
-    deinit {
-        print("DEINIT")
     }
     
     private func finishGame() {
