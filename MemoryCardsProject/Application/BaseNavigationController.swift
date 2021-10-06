@@ -1,5 +1,5 @@
 //
-//  BaseNavigationVC.swift
+//  BaseNavigationController.swift
 //  MemoryCardsProject
 //
 //  Created by alaattinbulut on 13.08.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseNavigationVC: UINavigationController, UINavigationBarDelegate {
+class BaseNavigationController: UINavigationController, UINavigationBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +23,10 @@ class BaseNavigationVC: UINavigationController, UINavigationBarDelegate {
   
     func askUserForConfirmation() {
         let alertController = UIAlertController(title: "Cancel Insertion",
-                                                message: "Do you really want to go back? If you proceed, all the inserted data will be lost.",
+                                                message: "Do you really want to quit?",
                                                 preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: "Yes, cancel",
+        alertController.addAction(UIAlertAction(title: "Yes, quit",
                                                 style: .cancel,
                                                 handler: { [weak self] _ in
                                                     self?.popViewController(animated: true)

@@ -10,22 +10,22 @@ import UIKit
 class BaseVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        revertCustomizedNavBar()
+        super.viewWillDisappear(animated)
+        //revertCustomizedNavBar()
     }
         
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        customizeNavBar()
+        super.viewWillAppear(animated)
+        //customizeNavBar()
     }
     
-    private func customizeNavBar() {
+    func customizeNavBar() {
         navigationController?.navigationBar.tintColor = .systemGreen
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = .black
     }
     
-    private func revertCustomizedNavBar() {
+    func revertCustomizedNavBar() {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = .clear
     }

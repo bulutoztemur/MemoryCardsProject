@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoriesVC: UIViewController, CategoryTappedProtocol {
+class CategoriesVC: BaseVC, CategoryTappedProtocol {
     
     let categoriesStackView: CategoriesStackView = {
         let csv = CategoriesStackView()
@@ -18,18 +18,20 @@ class CategoriesVC: UIViewController, CategoryTappedProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
-        
         categoriesStackView.delegate = self
         view.addSubview(categoriesStackView)
         setupConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        revertCustomizedNavBar()
+    }
+    
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            categoriesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            categoriesStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            categoriesStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        NSLayoutConstraint.activate([categoriesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                                     categoriesStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                                     categoriesStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
     }
     
     func categoryButtonTapped(categoryOne: CategoryEnum, categoryTwo: CategoryEnum) {

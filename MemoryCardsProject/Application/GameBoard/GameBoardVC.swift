@@ -56,7 +56,12 @@ class GameBoardVC: BaseVC {
         self.navigationItem.viewControllerTag = .askUserForConfirmation
         setupConstraints()
     }
-        
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        customizeNavBar()
+    }
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             scoreBoardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
