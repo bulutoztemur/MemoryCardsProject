@@ -38,7 +38,10 @@ class ResultVC: BaseVC {
         view.backgroundColor = .systemGreen
         navigationItem.viewControllerTag = .popToRootVC
         view.addSubview(resultView)
-        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             resultView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             resultView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),

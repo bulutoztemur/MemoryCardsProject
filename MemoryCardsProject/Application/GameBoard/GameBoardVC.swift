@@ -50,7 +50,7 @@ class GameBoardVC: BaseVC {
         view.backgroundColor = .systemGreen
         view.addSubview(collectionView)
         view.addSubview(scoreBoardView)
-        self.navigationItem.viewControllerTag = .askUserForConfirmation
+        navigationItem.viewControllerTag = .askUserForConfirmation
         setupConstraints()
     }
         
