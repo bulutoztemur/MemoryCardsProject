@@ -11,10 +11,13 @@ import RxSwift
 
 class GameBoardVC: BaseVC {
     
-    var sizeOne: Int
-    var sizeTwo: Int
     let screenWidth = UIScreen.main.bounds.size.width
-    let viewModel = GameBoardVM() 
+    var viewModel: GameBoardVM? {
+        didSet {
+            bind()
+            viewModel?.generateCards()
+        }
+    }
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -32,31 +35,25 @@ class GameBoardVC: BaseVC {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
-    init(_ category1: Int, _ category2: Int) {
-        sizeOne = category1
-        sizeTwo = category2
+    
+    init() {
         super.init(nibName: nil, bundle: nil)
-        viewModel.generateCards(size: sizeOne * sizeTwo)
-        viewModel.sizeOne.accept(sizeOne)
-        viewModel.sizeTwo.accept(sizeTwo)
-        bind()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
-        
         view.addSubview(collectionView)
         view.addSubview(scoreBoardView)
         self.navigationItem.viewControllerTag = .askUserForConfirmation
         setupConstraints()
     }
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         customizeNavBar()
@@ -77,8 +74,10 @@ class GameBoardVC: BaseVC {
     
     private func finishGame() {
         scoreBoardView.stopTimer()
-        
         let vc = ResultVC()
+        vc.timerMilliseconds = scoreBoardView.milliseconds
+        vc.category = viewModel?.category.value
+        vc.mistakeCount = viewModel?.mismatched.value ?? 0
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -86,22 +85,27 @@ class GameBoardVC: BaseVC {
 // MARK: - CollectionView Deletage Methods
 extension GameBoardVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sizeOne * sizeTwo
+        guard let viewModel = viewModel, let category = viewModel.category.value else { return 0 }
+        return category.dimension.first * category.dimension.second
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let viewModel = viewModel else { return UICollectionViewCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCardCell", for: indexPath) as! CardCell
         cell.frontImageView.image = UIImage(named: viewModel.cardsArray[indexPath.row].imageName)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth: CGFloat = ((screenWidth - 20) - ((CGFloat(sizeOne) - 1) * 10)) / CGFloat(sizeOne)
+        guard let viewModel = viewModel, let category = viewModel.category.value else { return CGSize(width: 0, height: 0)  }
+        let dim = CGFloat(category.dimension.first)
+        let cellWidth: CGFloat = ((screenWidth - 20) - ((dim - 1) * 12)) / dim
         let cellHeight = cellWidth
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewModel = viewModel else { return }
         let cell = collectionView.cellForItem(at: indexPath) as? CardCell
         viewModel.cardTapped(card: cell!, index: indexPath.row)
     }
@@ -110,16 +114,17 @@ extension GameBoardVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
 // MARK: - Bindings
 private extension GameBoardVC {
     func bind() {
+        guard let viewModel = viewModel else { return }
         viewModel.mismatched
             .subscribe(onNext: { [weak self] mismatchCount in
                 self?.scoreBoardView.mismatchLabel.text = "Mismatch: \(mismatchCount)"
             })
             .disposed(by: viewModel.disposeBag)
         
-        Observable.combineLatest(viewModel.totalMatched, viewModel.sizeOne, viewModel.sizeTwo)
-            .filter { totalMatched, sizeOne, sizeTwo in
-                guard let sizeOne = sizeOne, let sizeTwo = sizeTwo else { return false }
-                return totalMatched == sizeOne * sizeTwo / 2
+        viewModel.totalMatched
+            .filter { totalMatched in
+                guard let category = viewModel.category.value else { return false }
+                return totalMatched == category.dimension.first * category.dimension.second / 2
             }
             .subscribe(onNext: { [weak self] _ in
                 self?.finishGame()

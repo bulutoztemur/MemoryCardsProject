@@ -10,13 +10,11 @@ import UIKit
 class CategoryButton: UIButton {
     
     let categoryView: CategoryView
-    var category1: CategoryEnum
-    var category2: CategoryEnum
+    var category: CategoryEnum
     
-    init(frame: CGRect, categoryOne: CategoryEnum, categoryTwo: CategoryEnum) {
-        category1 = categoryOne
-        category2 = categoryTwo
-        categoryView = CategoryView(frame: .zero, categoryOne: categoryOne, categoryTwo: categoryTwo)
+    init(frame: CGRect, category: CategoryEnum) {
+        self.category = category
+        categoryView = CategoryView(frame: .zero, category: category)
         super.init(frame: frame)
         configureView()
     }

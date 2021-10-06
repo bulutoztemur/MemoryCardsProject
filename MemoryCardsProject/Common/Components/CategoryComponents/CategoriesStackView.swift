@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CategoryTappedProtocol {
-    func categoryButtonTapped(categoryOne: CategoryEnum, categoryTwo: CategoryEnum)
+    func categoryButtonTapped(category: CategoryEnum)
 }
 
 class CategoriesStackView: UIStackView {
@@ -33,9 +33,9 @@ class CategoriesStackView: UIStackView {
     }
     
     private func setCategoryButtons() {
-        categoryButtons.append(CategoryButton(frame: .zero, categoryOne: CategoryEnum.two, categoryTwo: CategoryEnum.three))
-        categoryButtons.append(CategoryButton(frame: .zero, categoryOne: CategoryEnum.three, categoryTwo: CategoryEnum.four))
-        categoryButtons.append(CategoryButton(frame: .zero, categoryOne: CategoryEnum.four, categoryTwo: CategoryEnum.six))
+        categoryButtons.append(CategoryButton(frame: .zero, category: CategoryEnum.twoThree))
+        categoryButtons.append(CategoryButton(frame: .zero, category: CategoryEnum.threeFour))
+        categoryButtons.append(CategoryButton(frame: .zero, category: CategoryEnum.fourSix))
     }
     
     private func addCategoryButtonsToView() {
@@ -50,6 +50,6 @@ class CategoriesStackView: UIStackView {
         colorAnimation.fromValue = UIColor.gray.cgColor
         colorAnimation.duration = 1
         sender.layer.add(colorAnimation, forKey: "ColorPulse")
-        delegate?.categoryButtonTapped(categoryOne: sender.category1, categoryTwo: sender.category2)
+        delegate?.categoryButtonTapped(category: sender.category)
     }
 }

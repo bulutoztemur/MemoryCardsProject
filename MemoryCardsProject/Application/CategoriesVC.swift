@@ -34,8 +34,9 @@ class CategoriesVC: BaseVC, CategoryTappedProtocol {
                                      categoriesStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
     }
     
-    func categoryButtonTapped(categoryOne: CategoryEnum, categoryTwo: CategoryEnum) {
-        let vc = GameBoardVC(categoryOne.info.number, categoryTwo.info.number)
+    func categoryButtonTapped(category: CategoryEnum) {
+        let vc = GameBoardVC()
+        vc.viewModel = GameBoardVM(category: category)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

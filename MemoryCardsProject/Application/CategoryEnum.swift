@@ -8,18 +8,27 @@
 import Foundation
 
 enum CategoryEnum: Int {
-    case two, three, four, six
+    case twoThree, threeFour, fourSix
     
-    var info: (number: Int, text: String) {
+    var dimension: (first: Int, second: Int) {
         switch self {
-        case .two:
-            return (2, "two")
-        case .three:
-            return (3, "three")
-        case .four:
-            return (4, "four")
-        case .six:
-            return (6, "six")
+        case .twoThree:
+            return (2, 3)
+        case .threeFour:
+            return (3, 4)
+        case .fourSix:
+            return (4, 6)
+        }
+    }
+    
+    var images: (first: String, second: String) {
+        switch self {
+        case .twoThree:
+            return ("two", "three")
+        case .threeFour:
+            return ("three", "four")
+        case .fourSix:
+            return ("four", "six")
         }
     }
 }

@@ -31,13 +31,16 @@ class GameBoardVM {
     weak var prevCard: CardCell? = nil
     var totalMatched = BehaviorRelay<Int>(value: 0)
     var mismatched = BehaviorRelay<Int>(value: 0)
-    var gameFinished = BehaviorRelay<Bool>(value: false)
-    var sizeOne = BehaviorRelay<Int?>(value: nil)
-    var sizeTwo = BehaviorRelay<Int?>(value: nil)
+    let category = BehaviorRelay<CategoryEnum?>(value: nil)
     let disposeBag = DisposeBag()
     
-    func generateCards(size: Int) {
-        for card in CardsEnum.allCases where cardsArray.count < size/2 {
+    init(category: CategoryEnum) {
+        self.category.accept(category)
+    }
+    
+    func generateCards() {
+        guard let category = category.value else { return }
+        for card in CardsEnum.allCases where cardsArray.count < (category.dimension.first * category.dimension.second / 2) {
             cardsArray.append(CardModel(image: card.rawValue))
         }
         cardsArray.append(contentsOf: cardsArray.clone())

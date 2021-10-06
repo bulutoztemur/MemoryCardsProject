@@ -36,9 +36,9 @@ class CategoryView: UIView {
         return imageView
     }()
     
-    init(frame: CGRect, categoryOne: CategoryEnum, categoryTwo: CategoryEnum) {
-        firstNumberImage.image = UIImage(named: categoryOne.info.text)
-        secondNumberImage.image = UIImage(named: categoryTwo.info.text)
+    init(frame: CGRect, category: CategoryEnum) {
+        firstNumberImage.image = UIImage(named: category.images.first)
+        secondNumberImage.image = UIImage(named: category.images.second)
         super.init(frame: frame)
         configureView()
     }
