@@ -15,27 +15,35 @@ class CategoriesVC: BaseVC, CategoryTappedProtocol {
         return csv
     }()
     
+    enum ProfileSideMenuState {
+        case close, open
+    }
+
+    var sideMenuState: ProfileSideMenuState = .close
+    var profileMenuVC = ProfileSideMenuVC()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
         categoriesStackView.delegate = self
         view.addSubview(categoriesStackView)
         setupConstraints()
+        createProfileNavBarButton()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        clearNavigationBarBackground()
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    private func clearNavigationBarBackground() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.backgroundColor = .clear
-        navigationController?.navigationBar.barStyle = .default
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        profileMenuVC.view.frame = CGRect(x: 16, y: view.safeAreaInsets.top, width: view.bounds.width * 2 / 3, height: view.bounds.height / 2)
+        profileMenuVC.view.layer.cornerRadius = 16
+        profileMenuVC.view.layer.masksToBounds = true
     }
-    
+        
     private func setupConstraints() {
         NSLayoutConstraint.activate([categoriesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
                                      categoriesStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -46,5 +54,33 @@ class CategoriesVC: BaseVC, CategoryTappedProtocol {
         let vc = GameBoardVC()
         vc.viewModel = GameBoardVM(category: category)
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func createProfileNavBarButton() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"),
+                                                           style: .done,
+                                                           target: self,
+                                                           action: #selector(didTapProfileButton))
+        
+        navigationItem.leftBarButtonItem?.tintColor = .black
+    }
+    
+    @objc func didTapProfileButton() {
+        switch sideMenuState {
+        case .close:
+            showProfileSideMenu()
+        case .open:
+            hideProfileSideMenu()
+        }
+    }
+    
+    private func showProfileSideMenu() {
+        add(profileMenuVC)
+        sideMenuState = .open
+    }
+    
+    private func hideProfileSideMenu() {
+        profileMenuVC.remove()
+        sideMenuState = .close
     }
 }

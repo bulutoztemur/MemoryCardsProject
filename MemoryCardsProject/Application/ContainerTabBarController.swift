@@ -9,18 +9,9 @@ import UIKit
 
 class ContainerTabBarController: UITabBarController {
     
-    enum ProfileSideMenuState {
-        case close, open
-    }
-    
-    var sideMenuState: ProfileSideMenuState = .close
-    var profileMenuVC = ProfileSideMenuVC()
-    
     override var selectedViewController: UIViewController? {
-        didSet {
-            if sideMenuState == .open {
-                hideProfileSideMenu()
-            }
+        willSet {
+            (selectedViewController as? BaseNavigationController)?.popToRootViewController(animated: false)
         }
     }
     
@@ -29,20 +20,11 @@ class ContainerTabBarController: UITabBarController {
         self.setViewControllers(setupViewControllers(), animated: true)
         self.tabBar.tintColor = .systemGreen
         self.tabBar.barTintColor = .black
-        createProfileNavBarButton()
-        navigationItem.backButtonTitle = ""
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        profileMenuVC.view.frame = CGRect(x: 16, y: view.safeAreaInsets.top, width: view.bounds.width * 2 / 3, height: view.bounds.height / 2)
-        profileMenuVC.view.layer.cornerRadius = 16
-        profileMenuVC.view.layer.masksToBounds = true
-    }
-
     private func setupViewControllers() -> [UIViewController] {
         let categoryVC = CategoriesVC()
-        categoryVC.title = "Play"
+        categoryVC.tabBarItem.title = "Play"
         categoryVC.tabBarItem.image = UIImage(systemName: "gamecontroller")
         
         let recordsVC = RecordsVC()
@@ -57,35 +39,11 @@ class ContainerTabBarController: UITabBarController {
         cardsVC.title = "Cards"
         cardsVC.tabBarItem.image = UIImage(systemName: "greetingcard")
 
-        return [categoryVC, recordsVC, shareVC, cardsVC]
-    }
-    
-    private func createProfileNavBarButton() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle"),
-                                                           style: .done,
-                                                           target: self,
-                                                           action: #selector(didTapProfileButton))
-        
-        navigationItem.leftBarButtonItem?.tintColor = .black
-    }
-    
-    @objc func didTapProfileButton() {
-        switch sideMenuState {
-        case .close:
-            showProfileSideMenu()
-        case .open:
-            hideProfileSideMenu()
+        let vcs = [categoryVC, recordsVC, shareVC, cardsVC]
+        return vcs.map {
+            BaseNavigationController(rootViewController: $0)
         }
     }
     
-    private func showProfileSideMenu() {
-        selectedViewController?.add(profileMenuVC)
-        sideMenuState = .open
-    }
-    
-    private func hideProfileSideMenu() {
-        profileMenuVC.remove()
-        sideMenuState = .close
-    }
 }
 

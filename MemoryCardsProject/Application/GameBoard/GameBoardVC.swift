@@ -51,24 +51,11 @@ class GameBoardVC: BaseVC {
         view.addSubview(collectionView)
         view.addSubview(scoreBoardView)
         navigationItem.viewControllerTag = .askUserForConfirmation
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationItem.title = "Game Board"
         setupConstraints()
     }
         
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        customizeNavBar()
-    }
-    
-    private func customizeNavBar() {
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.tintColor = UIColor.systemGreen
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.systemGreen]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
-        navigationItem.title = "Game Board"
-        navigationItem.backButtonTitle = ""
-    }
-    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             scoreBoardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
@@ -89,7 +76,7 @@ class GameBoardVC: BaseVC {
         vc.category = viewModel?.category.value
         vc.mistakeCount = viewModel?.mismatched.value ?? 0
         navigationController?.pushViewController(vc, animated: true)
-    }
+    }    
 }
 
 // MARK: - CollectionView Deletage Methods

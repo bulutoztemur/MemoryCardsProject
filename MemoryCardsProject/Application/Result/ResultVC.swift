@@ -57,9 +57,5 @@ class ResultVC: BaseVC {
                            multiplier: 0.8,
                            constant: 0)
             .isActive = true
-    }
-    
-    @objc func showConfirmationAlert() {
-        navigationController?.popToRootViewController(animated: true)
-    }
+    }    
 }

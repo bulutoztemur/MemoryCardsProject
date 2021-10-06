@@ -8,7 +8,7 @@
 import UIKit
 
 class BaseNavigationController: UINavigationController, UINavigationBarDelegate {
-    
+            
     func askUserForConfirmation() {
         let alertController = UIAlertController(title: "Cancel Insertion",
                                                 message: "Do you really want to quit?",
