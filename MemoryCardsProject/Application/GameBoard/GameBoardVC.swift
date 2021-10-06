@@ -59,6 +59,16 @@ class GameBoardVC: BaseVC {
         customizeNavBar()
     }
     
+    private func customizeNavBar() {
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.tintColor = UIColor.systemGreen
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.systemGreen]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationItem.title = "Game Board"
+        navigationItem.backButtonTitle = ""
+    }
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             scoreBoardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),

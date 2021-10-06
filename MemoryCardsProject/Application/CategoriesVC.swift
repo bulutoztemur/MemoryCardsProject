@@ -25,7 +25,15 @@ class CategoriesVC: BaseVC, CategoryTappedProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        revertCustomizedNavBar()
+        clearNavigationBarBackground()
+    }
+    
+    private func clearNavigationBarBackground() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.barStyle = .default
     }
     
     private func setupConstraints() {

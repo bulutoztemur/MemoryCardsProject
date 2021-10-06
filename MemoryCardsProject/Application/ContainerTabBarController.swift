@@ -29,8 +29,8 @@ class ContainerTabBarController: UITabBarController {
         self.setViewControllers(setupViewControllers(), animated: true)
         self.tabBar.tintColor = .systemGreen
         self.tabBar.barTintColor = .black
-        
         createProfileNavBarButton()
+        navigationItem.backButtonTitle = ""
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,7 +67,6 @@ class ContainerTabBarController: UITabBarController {
                                                            action: #selector(didTapProfileButton))
         
         navigationItem.leftBarButtonItem?.tintColor = .black
-
     }
     
     @objc func didTapProfileButton() {

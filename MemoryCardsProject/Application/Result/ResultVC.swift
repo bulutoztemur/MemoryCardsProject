@@ -37,6 +37,7 @@ class ResultVC: BaseVC {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
         navigationItem.viewControllerTag = .popToRootVC
+        navigationItem.title = "Result"
         view.addSubview(resultView)
         setupConstraints()
     }

@@ -8,19 +8,7 @@
 import UIKit
 
 class BaseNavigationController: UINavigationController, UINavigationBarDelegate {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        clearNavigationBarBackground()
-    }
     
-    private func clearNavigationBarBackground() {
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.isTranslucent = true
-        self.navigationBar.backgroundColor = .clear
-    }
-  
     func askUserForConfirmation() {
         let alertController = UIAlertController(title: "Cancel Insertion",
                                                 message: "Do you really want to quit?",
