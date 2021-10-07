@@ -42,9 +42,18 @@ class GameBoardVC: BaseVC {
         view.addSubview(collectionView)
         view.addSubview(scoreBoardView)
         navigationItem.viewControllerTag = .askUserForConfirmation
-        navigationController?.setNavigationBarHidden(false, animated: false)
         navigationItem.title = "Game Board"
         setupConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
         
     private func setupConstraints() {

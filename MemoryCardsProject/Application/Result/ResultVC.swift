@@ -54,7 +54,7 @@ class ResultVC: BaseVC {
                            relatedBy: .equal,
                            toItem: view,
                            attribute: .centerY,
-                           multiplier: 0.8,
+                           multiplier: 0.75,
                            constant: 0)
             .isActive = true
     }    
