@@ -8,6 +8,8 @@ target 'MemoryCardsProject' do
   # Pods for MemoryCardsProject
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxTheme', '~> 5.0'
+
 
   target 'MemoryCardsProjectTests' do
     inherit! :search_paths

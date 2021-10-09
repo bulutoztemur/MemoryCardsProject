@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxTheme
 
 class ContainerTabBarController: UITabBarController {
     
@@ -18,8 +19,8 @@ class ContainerTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewControllers(setupViewControllers(), animated: true)
-        self.tabBar.tintColor = .systemGreen
-        self.tabBar.barTintColor = .black
+        self.tabBar.theme.tintColor = themeResource { $0.barTintColor }
+        self.tabBar.theme.barTintColor = themeResource { $0.tabBarBgColor }
     }
     
     private func setupViewControllers() -> [UIViewController] {

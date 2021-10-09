@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+import RxTheme
 
 class BaseVC: UIViewController {
     
@@ -19,13 +22,10 @@ class BaseVC: UIViewController {
     }
     
     private func customizeNavBar() {
-        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.theme.barStyle = themeResource { $0.navBarStyle }
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.tintColor = UIColor.systemGreen
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.systemGreen]
+        navigationController?.navigationBar.theme.tintColor = themeResource { $0.barTintColor }
+        navigationController?.navigationBar.theme.titleTextAttributes = themeResource { $0.navigationBarTitleTextAttributes }
         navigationItem.backButtonTitle = ""
     }
-
-    
-
 }
