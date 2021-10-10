@@ -24,7 +24,7 @@ class BaseVC: UIViewController {
     private func customizeNavBar() {
         navigationController?.navigationBar.theme.barStyle = themeResource { $0.navBarStyle }
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.theme.tintColor = themeResource { $0.barTintColor }
+        navigationController?.navigationBar.theme.tintColor = themeResource { $0.tintColor }
         navigationController?.navigationBar.theme.titleTextAttributes = themeResource { $0.navigationBarTitleTextAttributes }
         navigationItem.backButtonTitle = ""
     }

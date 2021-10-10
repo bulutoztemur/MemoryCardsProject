@@ -19,7 +19,7 @@ class ContainerTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewControllers(setupViewControllers(), animated: true)
-        self.tabBar.theme.tintColor = themeResource { $0.barTintColor }
+        self.tabBar.theme.tintColor = themeResource { $0.tintColor }
         self.tabBar.theme.barTintColor = themeResource { $0.tabBarBgColor }
     }
     

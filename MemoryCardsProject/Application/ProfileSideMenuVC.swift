@@ -6,13 +6,19 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
 
 class ProfileSideMenuVC: UIViewController {
+    let disposeBag = DisposeBag()
     
     var mainStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.alignment = .fill
         stackView.distribution = .fill
+        stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -20,16 +26,16 @@ class ProfileSideMenuVC: UIViewController {
     var themeStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.alignment = .top
-        stackView.distribution = .equalSpacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 16
         return stackView
     }()
     
     var themeLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Dark Mode"
+        label.font = AppFont.semiboldFontMedium
         label.theme.textColor = themeResource { $0.textColor }
         return label
     }()
@@ -37,15 +43,49 @@ class ProfileSideMenuVC: UIViewController {
     var themeSwitch: UISwitch = {
         let themeSwitch = UISwitch()
         themeSwitch.isOn = true
-        themeSwitch.translatesAutoresizingMaskIntoConstraints = false
         themeSwitch.tintColor = .darkGray
         themeSwitch.onTintColor = .darkGray
-        themeSwitch.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        themeSwitch.thumbTintColor = .systemGreen
+        themeSwitch.backgroundColor = .lightGray
+        themeSwitch.theme.thumbTintColor = themeResource { $0.tintColor }
         themeSwitch.layer.cornerRadius = 16
         themeSwitch.layer.masksToBounds = true
         themeSwitch.addTarget(self, action: #selector(didChangeThemeSwitchValue), for: .valueChanged)
         return themeSwitch
+    }()
+    
+    var fontSizeArrangeStackView: UIStackView = {
+       let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 12
+        return stackView
+    }()
+    
+    var fontSizeSlider: UISlider = {
+       let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 2
+        slider.isContinuous = false
+        slider.theme.thumbTintColor = themeResource { $0.tintColor }
+        slider.theme.minimumTrackTintColor = themeResource { $0.tintColor }
+        return slider
+    }()
+    
+    var smallFontLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Aa"
+        label.font = AppFont.semiboldFontSmall
+        label.theme.textColor = themeResource { $0.textColor }
+        return label
+    }()
+    
+    var largeFontLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Aa"
+        label.font = AppFont.semiboldFontLarge
+        label.theme.textColor = themeResource { $0.textColor }
+        return label
     }()
     
     @objc func didChangeThemeSwitchValue() {
@@ -57,24 +97,41 @@ class ProfileSideMenuVC: UIViewController {
         view.theme.backgroundColor = themeResource { $0.profileViewBgColor }
         setupView()
         setupConstraints()
+        bind()
     }
     
     private func setupView() {
         themeStackView.addArrangedSubview(themeLabel)
         themeStackView.addArrangedSubview(themeSwitch)
+        fontSizeArrangeStackView.addArrangedSubview(smallFontLabel)
+        fontSizeArrangeStackView.addArrangedSubview(fontSizeSlider)
+        fontSizeArrangeStackView.addArrangedSubview(largeFontLabel)
         mainStackView.addArrangedSubview(themeStackView)
+        mainStackView.addArrangedSubview(fontSizeArrangeStackView)
         view.addSubview(mainStackView)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
-            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            
+            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     
+    private func bind() {
+        
+        fontSizeSlider.rx.value
+            .map { round($0)}
+            .subscribe(onNext: { [weak self] val in
+                self?.fontSizeSlider.setValue(val, animated: true)
+                self?.themeLabel.font = AppFont.fontArrangerValues[Int(val)]
+
+            })
+             .disposed(by: disposeBag)
+
+        
+    }
     
 }
