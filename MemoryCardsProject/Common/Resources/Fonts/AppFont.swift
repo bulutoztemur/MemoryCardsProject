@@ -20,7 +20,6 @@ struct AppFont {
     static let boldFontLarge = UIFont(name: mainBoldFontName, size: 24)
     static let boldFontMedium = UIFont(name: mainBoldFontName, size: 20)
     static let boldFontSmall = UIFont(name: mainBoldFontName, size: 16)
-    static let fontArrangerValues = [AppFont.semiboldFontSmall!, AppFont.semiboldFontMedium!, AppFont.semiboldFontLarge!]
 
     
 }

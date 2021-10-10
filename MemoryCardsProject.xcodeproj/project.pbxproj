@@ -163,15 +163,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		88202A7026CA5A550079234F /* Components */ = {
+		88202A7026CA5A550079234F /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				883B33F1270B143F00469152 /* ResultView */,
-				888CBCBD26CD173F00BDAFB2 /* CategoryComponents */,
-				888CBCBF26CD197F00BDAFB2 /* ScoreboardView.swift */,
-				888CBCCE26CD4F3100BDAFB2 /* CardView.swift */,
+				882EF266271306DE00D781AD /* NonReusable */,
+				882EF265271306D600D781AD /* Reusable */,
 			);
-			path = Components;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		882EF2142711C70300D781AD /* Resources */ = {
@@ -218,6 +216,31 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		882EF2642713069600D781AD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		882EF265271306D600D781AD /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				888CBCBF26CD197F00BDAFB2 /* ScoreboardView.swift */,
+				888CBCCE26CD4F3100BDAFB2 /* CardView.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		882EF266271306DE00D781AD /* NonReusable */ = {
+			isa = PBXGroup;
+			children = (
+				883B33F1270B143F00469152 /* ResultView */,
+				888CBCBD26CD173F00BDAFB2 /* CategoryView */,
+			);
+			path = NonReusable;
+			sourceTree = "<group>";
+		};
 		883B337D2709C4C100469152 /* Result */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,14 +276,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		888CBCBD26CD173F00BDAFB2 /* CategoryComponents */ = {
+		888CBCBD26CD173F00BDAFB2 /* CategoryView */ = {
 			isa = PBXGroup;
 			children = (
 				88202A7126CA5A7C0079234F /* CategoryView.swift */,
 				88202A7926CAB0A70079234F /* CategoryButton.swift */,
 				88202A7E26CAB7090079234F /* CategoriesStackView.swift */,
 			);
-			path = CategoryComponents;
+			path = CategoryView;
 			sourceTree = "<group>";
 		};
 		88F09D1A26C39B7400B56A3F = {
@@ -320,9 +343,10 @@
 		88F09DD326C96B9D00B56A3F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				882EF2642713069600D781AD /* Components */,
 				882EF2142711C70300D781AD /* Resources */,
 				886E98A527050B1600265CF2 /* Utils */,
-				88202A7026CA5A550079234F /* Components */,
+				88202A7026CA5A550079234F /* CustomViews */,
 				88F09DD426C96BA500B56A3F /* Extensions */,
 			);
 			path = Common;

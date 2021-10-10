@@ -12,6 +12,8 @@ import RxCocoa
 
 class ProfileSideMenuVC: UIViewController {
     let disposeBag = DisposeBag()
+    static let fontArrangerValues = [AppFont.semiboldFontSmall!, AppFont.semiboldFontMedium!, AppFont.semiboldFontLarge!]
+
     
     var mainStackView: UIStackView = {
        let stackView = UIStackView()
@@ -126,7 +128,7 @@ class ProfileSideMenuVC: UIViewController {
             .map { round($0)}
             .subscribe(onNext: { [weak self] val in
                 self?.fontSizeSlider.setValue(val, animated: true)
-                self?.themeLabel.font = AppFont.fontArrangerValues[Int(val)]
+                self?.themeLabel.font = Self.fontArrangerValues[Int(val)]
 
             })
              .disposed(by: disposeBag)
