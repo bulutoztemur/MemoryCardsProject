@@ -169,26 +169,14 @@ class ProfileSideMenuVC: UIViewController {
         fontSizeSlider.rx.value
             .map { round($0)}
             .subscribe(onNext: { [weak self] val in
-                TestM.fontSizem = Int((val + 10) * 2)
-                TestM.a.accept((Int(val) + 10) * 2)
                 self?.fontSizeSlider.setValue(val, animated: true)
                 self?.themeLabel.font = Self.fontArrangerValues[Int(val)]
 
             })
              .disposed(by: disposeBag)
         
-        
         Localizer.shared.localized("DarkMode")
         .drive(themeLabel.rx.text)
         .disposed(by: disposeBag)
-
-
-        
     }
-    
-}
-
-class TestM {
-    static var fontSizem = 10
-    static let a = BehaviorRelay<Int>(value: 0)
 }
