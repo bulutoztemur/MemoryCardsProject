@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  MemoryCardsProject
+
+  Created by alaattinbulut on 11.10.2021.
+  
+*/
+
+"DarkMode" = "Dark Mode";
+"GameBoard" = "Game Board";
+"Result" = "Result";
+"Congratulations" = "Congratulations";
+"Play" = "Play";
+"Records" = "Records";
+"Share" = "Share";
+"Cards" = "Cards";

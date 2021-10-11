@@ -11,14 +11,14 @@ import RxSwift
 typealias Attributes = [NSAttributedString.Key: Any]
 
 protocol Theme {
+    var backgroundColor: UIColor { get }
+    var textColor: UIColor { get }
     var tabBarBgColor: UIColor { get }
     var navBarStyle: UIBarStyle { get }
     var tintColor: UIColor { get }
     var navigationBarTitleTextAttributes: Attributes { get }
     var profileViewBgColor: UIColor { get }
-    var backgroundColor: UIColor { get }
-    var textColor: UIColor { get }
-    var minSliderTintColor: UIColor { get }
+    var greenToWhite: UIColor { get }
 }
 
 struct LightTheme: Theme {
@@ -27,9 +27,9 @@ struct LightTheme: Theme {
     let tabBarBgColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     let navBarStyle: UIBarStyle = .default
     let tintColor: UIColor = .black
-    let minSliderTintColor: UIColor = .systemGreen
     let navigationBarTitleTextAttributes: Attributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)]
     let profileViewBgColor: UIColor = UIColor(white: 1, alpha: 0.9)
+    let greenToWhite: UIColor = .white
 }
 
 struct DarkTheme: Theme {
@@ -38,9 +38,9 @@ struct DarkTheme: Theme {
     let tabBarBgColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     let navBarStyle: UIBarStyle = .black
     let tintColor: UIColor = .systemGreen
-    let minSliderTintColor: UIColor = .white
     let navigationBarTitleTextAttributes: Attributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGreen]
     let profileViewBgColor: UIColor = UIColor(white: 0, alpha: 0.9)
+    let greenToWhite: UIColor = .systemGreen
 }
 
 enum ThemeType: ThemeProvider {

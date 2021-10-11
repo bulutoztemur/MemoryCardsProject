@@ -8,21 +8,43 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
+import RxLocalizer
 
 class ProfileSideMenuVC: UIViewController {
     let disposeBag = DisposeBag()
     static let fontArrangerValues = [AppFont.semiboldFontSmall!, AppFont.semiboldFontMedium!, AppFont.semiboldFontLarge!]
-
     
     var mainStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.spacing = 16
+        stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+    }()
+    
+    var profileImageContainerView: UIView = {
+        let view = UIView()
+         return view
+    }()
+    
+    var profileImageCircleBorderView: UIView = {
+       let insideView = UIView()
+        insideView.translatesAutoresizingMaskIntoConstraints = false
+        insideView.layer.borderColor = UIColor.black.cgColor
+        insideView.layer.borderWidth = 1
+        insideView.theme.backgroundColor = themeResource { $0.tintColor }
+        return insideView
+    }()
+    
+    var profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        var image = UIImage(named: "profile-user")
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
 
     var themeStackView: UIStackView = {
@@ -36,7 +58,6 @@ class ProfileSideMenuVC: UIViewController {
     
     var themeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Dark Mode"
         label.font = AppFont.semiboldFontMedium
         label.theme.textColor = themeResource { $0.textColor }
         return label
@@ -100,14 +121,26 @@ class ProfileSideMenuVC: UIViewController {
         setupView()
         setupConstraints()
         bind()
+        
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+        profileImageCircleBorderView.layer.cornerRadius = profileImageCircleBorderView.frame.width / 2
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
     private func setupView() {
+        profileImageCircleBorderView.addSubview(profileImageView)
+        profileImageContainerView.addSubview(profileImageCircleBorderView)
         themeStackView.addArrangedSubview(themeLabel)
         themeStackView.addArrangedSubview(themeSwitch)
         fontSizeArrangeStackView.addArrangedSubview(smallFontLabel)
         fontSizeArrangeStackView.addArrangedSubview(fontSizeSlider)
         fontSizeArrangeStackView.addArrangedSubview(largeFontLabel)
+        mainStackView.addArrangedSubview(profileImageContainerView)
         mainStackView.addArrangedSubview(themeStackView)
         mainStackView.addArrangedSubview(fontSizeArrangeStackView)
         view.addSubview(mainStackView)
@@ -117,8 +150,17 @@ class ProfileSideMenuVC: UIViewController {
         NSLayoutConstraint.activate([
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            mainStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            profileImageCircleBorderView.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor),
+            profileImageCircleBorderView.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor),
+            profileImageView.topAnchor.constraint(equalTo: profileImageCircleBorderView.topAnchor, constant: 4),
+            profileImageView.leadingAnchor.constraint(equalTo: profileImageCircleBorderView.leadingAnchor, constant: 4),
+            
+            profileImageContainerView.centerYAnchor.constraint(equalTo: profileImageCircleBorderView.centerYAnchor),
+            profileImageContainerView.centerXAnchor.constraint(equalTo: profileImageCircleBorderView.centerXAnchor),
+            profileImageCircleBorderView.topAnchor.constraint(equalTo: profileImageContainerView.topAnchor),
         ])
     }
     
@@ -127,13 +169,26 @@ class ProfileSideMenuVC: UIViewController {
         fontSizeSlider.rx.value
             .map { round($0)}
             .subscribe(onNext: { [weak self] val in
+                TestM.fontSizem = Int((val + 10) * 2)
+                TestM.a.accept((Int(val) + 10) * 2)
                 self?.fontSizeSlider.setValue(val, animated: true)
                 self?.themeLabel.font = Self.fontArrangerValues[Int(val)]
 
             })
              .disposed(by: disposeBag)
+        
+        
+        Localizer.shared.localized("DarkMode")
+        .drive(themeLabel.rx.text)
+        .disposed(by: disposeBag)
+
 
         
     }
     
+}
+
+class TestM {
+    static var fontSizem = 10
+    static let a = BehaviorRelay<Int>(value: 0)
 }

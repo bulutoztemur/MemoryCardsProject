@@ -9,7 +9,7 @@ target 'MemoryCardsProject' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxTheme', '~> 5.0'
-
+  pod 'RxLocalizer'
 
   target 'MemoryCardsProjectTests' do
     inherit! :search_paths

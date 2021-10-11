@@ -7,9 +7,11 @@
 
 import UIKit
 import RxTheme
+import RxSwift
+import RxCocoa
 
 class ContainerTabBarController: UITabBarController {
-    
+        
     override var selectedViewController: UIViewController? {
         willSet {
             (selectedViewController as? BaseNavigationController)?.popToRootViewController(animated: false)
@@ -28,6 +30,7 @@ class ContainerTabBarController: UITabBarController {
         categoryVC.tabBarItem.title = "Play"
         categoryVC.tabBarItem.image = UIImage(systemName: "gamecontroller")
         
+        
         let recordsVC = RecordsVC()
         recordsVC.title = "Records"
         recordsVC.tabBarItem.image = UIImage(systemName: "rosette")
@@ -45,6 +48,5 @@ class ContainerTabBarController: UITabBarController {
             BaseNavigationController(rootViewController: $0)
         }
     }
-    
 }
 

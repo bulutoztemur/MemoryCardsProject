@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  MemoryCardsProject
+
+  Created by alaattinbulut on 11.10.2021.
+  
+*/
+
+"DarkMode" = "Gece Modu";
+"GameBoard" = "Oyun Tahtası";
+"Result" = "Sonuç";
+"Congratulations" = "Tebrikler";
+"Play" = "Oyna";
+"Records" = "Rekorlar";
+"Share" = "Paylaş";
+"Cards" = "Kartlar";
+

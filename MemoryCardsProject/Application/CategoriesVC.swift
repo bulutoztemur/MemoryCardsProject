@@ -9,7 +9,7 @@ import UIKit
 
 class CategoriesVC: BaseVC, CategoryTappedProtocol {
     
-    let dummyView: UIView = {
+    let profileImageContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -48,8 +48,8 @@ class CategoriesVC: BaseVC, CategoryTappedProtocol {
         view.backgroundColor = .systemGreen
         categoriesStackView.delegate = self
         view.addSubview(categoriesStackView)
-        dummyView.addSubview(profileImageView)
-        view.addSubview(dummyView)
+        profileImageContainerView.addSubview(profileImageView)
+        view.addSubview(profileImageContainerView)
         setupConstraints()
         createProfileNavBarButton()
         profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapProfileButton)))
@@ -71,18 +71,18 @@ class CategoriesVC: BaseVC, CategoryTappedProtocol {
         
     private func setupConstraints() {
         
-        let verticalConstraintProfileImage = NSLayoutConstraint(item: dummyView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: profileImageView, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 2, constant: 0)
+        let verticalConstraintProfileImage = NSLayoutConstraint(item: profileImageContainerView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: profileImageView, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 2, constant: 0)
 
         NSLayoutConstraint.activate([categoriesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
                                      categoriesStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
                                      categoriesStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
                                      
-                                     dummyView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                                     dummyView.bottomAnchor.constraint(equalTo: categoriesStackView.topAnchor),
-                                     dummyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                     dummyView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     profileImageContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                                     profileImageContainerView.bottomAnchor.constraint(equalTo: categoriesStackView.topAnchor),
+                                     profileImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     profileImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                                      
-                                     profileImageView.leadingAnchor.constraint(equalTo: dummyView.leadingAnchor, constant: 20),
+                                     profileImageView.leadingAnchor.constraint(equalTo: profileImageContainerView.leadingAnchor, constant: 20),
                                      profileImageView.heightAnchor.constraint(equalToConstant: 32),
                                      profileImageView.widthAnchor.constraint(equalToConstant: 32),
                                      verticalConstraintProfileImage,
@@ -119,7 +119,7 @@ class CategoriesVC: BaseVC, CategoryTappedProtocol {
             profileMenuVC.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/2),
             profileMenuVC.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/4),
             profileMenuVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            profileMenuVC.view.topAnchor.constraint(equalTo: dummyView.centerYAnchor),
+            profileMenuVC.view.topAnchor.constraint(equalTo: profileImageContainerView.centerYAnchor),
         ])
         sideMenuState = .open
     }
