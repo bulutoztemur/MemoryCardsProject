@@ -16,7 +16,7 @@ class CategoriesVC: BaseVC, CategoryTappedProtocol {
     }()
     
     let profileImageView: UIImageView = {
-       let imgView = UIImageView(image: UIImage(systemName: "person.crop.circle"))
+        let imgView = UIImageView(image: UIImage(systemName: "person.crop.circle"))
         imgView.translatesAutoresizingMaskIntoConstraints = false
         imgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapProfileButton)))
         imgView.tintColor = .black
@@ -31,7 +31,7 @@ class CategoriesVC: BaseVC, CategoryTappedProtocol {
     }()
     
     let profileMenuVC: ProfileSideMenuVC = {
-       var profileMenuVC = ProfileSideMenuVC()
+        var profileMenuVC = ProfileSideMenuVC()
         profileMenuVC.view.layer.cornerRadius = 16
         profileMenuVC.view.translatesAutoresizingMaskIntoConstraints = false
         return profileMenuVC
@@ -40,9 +40,9 @@ class CategoriesVC: BaseVC, CategoryTappedProtocol {
     enum ProfileSideMenuState {
         case close, open
     }
-
+    
     var sideMenuState: ProfileSideMenuState = .close
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
@@ -68,11 +68,11 @@ class CategoriesVC: BaseVC, CategoryTappedProtocol {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-        
+    
     private func setupConstraints() {
         
         let verticalConstraintProfileImage = NSLayoutConstraint(item: profileImageContainerView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: profileImageView, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 2, constant: 0)
-
+        
         NSLayoutConstraint.activate([categoriesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
                                      categoriesStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
                                      categoriesStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
