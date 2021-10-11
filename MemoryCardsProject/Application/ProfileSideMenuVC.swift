@@ -15,7 +15,7 @@ class ProfileSideMenuVC: UIViewController {
     static let fontArrangerValues = [AppFont.semiboldFontSmall!, AppFont.semiboldFontMedium!, AppFont.semiboldFontLarge!]
     
     var mainStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
@@ -26,11 +26,11 @@ class ProfileSideMenuVC: UIViewController {
     
     var profileImageContainerView: UIView = {
         let view = UIView()
-         return view
+        return view
     }()
     
     var profileImageCircleBorderView: UIView = {
-       let insideView = UIView()
+        let insideView = UIView()
         insideView.translatesAutoresizingMaskIntoConstraints = false
         insideView.layer.borderColor = UIColor.black.cgColor
         insideView.layer.borderWidth = 1
@@ -46,9 +46,9 @@ class ProfileSideMenuVC: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-
+    
     var themeStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fill
@@ -62,7 +62,7 @@ class ProfileSideMenuVC: UIViewController {
         label.theme.textColor = themeResource { $0.textColor }
         return label
     }()
-
+    
     var themeSwitch: UISwitch = {
         let themeSwitch = UISwitch()
         themeSwitch.isOn = true
@@ -77,7 +77,7 @@ class ProfileSideMenuVC: UIViewController {
     }()
     
     var fontSizeArrangeStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fill
@@ -86,7 +86,7 @@ class ProfileSideMenuVC: UIViewController {
     }()
     
     var fontSizeSlider: UISlider = {
-       let slider = UISlider()
+        let slider = UISlider()
         slider.minimumValue = 0
         slider.maximumValue = 2
         slider.isContinuous = false
@@ -114,7 +114,7 @@ class ProfileSideMenuVC: UIViewController {
     @objc func didChangeThemeSwitchValue() {
         themeSwitch.isOn ? themeService.switch(.dark) : themeService.switch(.light)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.theme.backgroundColor = themeResource { $0.profileViewBgColor }
@@ -125,7 +125,7 @@ class ProfileSideMenuVC: UIViewController {
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
         profileImageCircleBorderView.layer.cornerRadius = profileImageCircleBorderView.frame.width / 2
-
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -165,18 +165,17 @@ class ProfileSideMenuVC: UIViewController {
     }
     
     private func bind() {
-        
         fontSizeSlider.rx.value
             .map { round($0)}
             .subscribe(onNext: { [weak self] val in
                 self?.fontSizeSlider.setValue(val, animated: true)
                 self?.themeLabel.font = Self.fontArrangerValues[Int(val)]
-
+                
             })
-             .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
         
         Localizer.shared.localized("DarkMode")
-        .drive(themeLabel.rx.text)
-        .disposed(by: disposeBag)
+            .drive(themeLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 }
