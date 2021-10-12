@@ -19,7 +19,7 @@ class ProfileSideMenuVC: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.spacing = 20
+        stackView.spacing = 24
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -34,7 +34,7 @@ class ProfileSideMenuVC: UIViewController {
         insideView.translatesAutoresizingMaskIntoConstraints = false
         insideView.layer.borderColor = UIColor.black.cgColor
         insideView.layer.borderWidth = 1
-        insideView.theme.backgroundColor = themeResource { $0.tintColor }
+        insideView.theme.backgroundColor = themeResource { $0.greenToWhite }
         return insideView
     }()
     
@@ -111,6 +111,29 @@ class ProfileSideMenuVC: UIViewController {
         return label
     }()
     
+    var langStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 12
+        return stackView
+    }()
+    
+    var langLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Language"
+        label.font = AppFont.semiboldFontLarge
+        label.theme.textColor = themeResource { $0.textColor }
+        return label
+    }()
+    
+    var langView: HorizontalItemSelectionView = {
+       let langView = HorizontalItemSelectionView()
+        langView.translatesAutoresizingMaskIntoConstraints = false
+        return langView
+    }()
+    
     @objc func didChangeThemeSwitchValue() {
         themeSwitch.isOn ? themeService.switch(.dark) : themeService.switch(.light)
     }
@@ -125,7 +148,6 @@ class ProfileSideMenuVC: UIViewController {
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
         profileImageCircleBorderView.layer.cornerRadius = profileImageCircleBorderView.frame.width / 2
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -140,9 +162,12 @@ class ProfileSideMenuVC: UIViewController {
         fontSizeArrangeStackView.addArrangedSubview(smallFontLabel)
         fontSizeArrangeStackView.addArrangedSubview(fontSizeSlider)
         fontSizeArrangeStackView.addArrangedSubview(largeFontLabel)
+        langStack.addArrangedSubview(langLabel)
+        langStack.addArrangedSubview(langView)
         mainStackView.addArrangedSubview(profileImageContainerView)
         mainStackView.addArrangedSubview(themeStackView)
         mainStackView.addArrangedSubview(fontSizeArrangeStackView)
+        mainStackView.addArrangedSubview(langStack)
         view.addSubview(mainStackView)
     }
     
@@ -161,6 +186,7 @@ class ProfileSideMenuVC: UIViewController {
             profileImageContainerView.centerYAnchor.constraint(equalTo: profileImageCircleBorderView.centerYAnchor),
             profileImageContainerView.centerXAnchor.constraint(equalTo: profileImageCircleBorderView.centerXAnchor),
             profileImageCircleBorderView.topAnchor.constraint(equalTo: profileImageContainerView.topAnchor),
+            
         ])
     }
     
@@ -170,7 +196,7 @@ class ProfileSideMenuVC: UIViewController {
             .subscribe(onNext: { [weak self] val in
                 self?.fontSizeSlider.setValue(val, animated: true)
                 self?.themeLabel.font = Self.fontArrangerValues[Int(val)]
-                
+                self?.langLabel.font = Self.fontArrangerValues[Int(val)]
             })
             .disposed(by: disposeBag)
         

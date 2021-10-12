@@ -23,13 +23,13 @@ class ContainerTabBarController: UITabBarController {
         self.setViewControllers(setupViewControllers(), animated: true)
         self.tabBar.theme.tintColor = themeResource { $0.tintColor }
         self.tabBar.theme.barTintColor = themeResource { $0.tabBarBgColor }
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: AppFont.mainFontXsmall as Any], for: .normal)
     }
     
     private func setupViewControllers() -> [UIViewController] {
         let categoryVC = CategoriesVC()
         categoryVC.tabBarItem.title = "Play"
         categoryVC.tabBarItem.image = UIImage(systemName: "gamecontroller")
-        
         
         let recordsVC = RecordsVC()
         recordsVC.title = "Records"
