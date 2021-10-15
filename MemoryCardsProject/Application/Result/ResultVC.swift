@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import RxLocalizer
 
 class ResultVC: BaseVC {
+    
+    let viewModel = ResultVM()
         
     var resultView: ResultView = {
         var resultView = ResultView()

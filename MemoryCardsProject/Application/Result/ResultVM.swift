@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class ResultVM {
-    
+    let disposeBag = DisposeBag()
 }

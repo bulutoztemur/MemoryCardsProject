@@ -128,8 +128,8 @@ class ProfileSideMenuVC: UIViewController {
         return label
     }()
     
-    var langView: HorizontalItemSelectionView = {
-       let langView = HorizontalItemSelectionView()
+    var langView: LanguageSelectionView = {
+       let langView = LanguageSelectionView()
         langView.translatesAutoresizingMaskIntoConstraints = false
         return langView
     }()
@@ -202,6 +202,10 @@ class ProfileSideMenuVC: UIViewController {
         
         Localizer.shared.localized("DarkMode")
             .drive(themeLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        Localizer.shared.localized("Language")
+            .drive(langLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }
