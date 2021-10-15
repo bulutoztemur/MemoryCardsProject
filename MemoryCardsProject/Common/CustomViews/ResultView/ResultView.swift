@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import RxSwift
+import RxLocalizer
 
 class ResultView: UIView {
     
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
-            
+            Localizer.shared.localized("Congratulations")
+                .drive(onNext: { [weak self] localizedText in
+                    self?.titleLabel.text = localizedText.uppercased(with: Locale(identifier: "tr"))
+                })
+                .disposed(by: DisposeBag())
         }
     }
     
