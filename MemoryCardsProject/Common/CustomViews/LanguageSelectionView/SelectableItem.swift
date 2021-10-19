@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxTheme
 
 class SelectableItem: UIView {
         
@@ -32,7 +33,7 @@ class SelectableItem: UIView {
     func addBorderCircle() {
         layer.cornerRadius = frame.width / 2
         layer.borderWidth = 2
-        layer.borderColor = UIColor.systemGreen.cgColor
+        layer.theme.borderColor = themeResource { $0.tintColor.cgColor }
     }
     
     func removeBorderCircle() {

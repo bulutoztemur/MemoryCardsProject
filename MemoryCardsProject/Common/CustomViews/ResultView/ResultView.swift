@@ -15,7 +15,7 @@ class ResultView: UIView {
         didSet {
             Localizer.shared.localized("Congratulations")
                 .drive(onNext: { [weak self] localizedText in
-                    self?.titleLabel.text = localizedText.uppercased(with: Locale(identifier: "tr"))
+                    self?.titleLabel.text = localizedText.uppercased(with: AppLocalization.shared.language.getLocale())
                 })
                 .disposed(by: DisposeBag())
         }

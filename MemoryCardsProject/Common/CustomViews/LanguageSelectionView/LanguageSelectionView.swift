@@ -75,14 +75,14 @@ class LanguageSelectionView: UIView {
         ])
     }
         
-    fileprivate func setDefaultActiveFlagView(_ language: LanguageSelectionView.Language, _ flagView: SelectableItem) {
-        if language == Language.defaultLanguage {
+    fileprivate func setDefaultActiveFlagView(_ language: AppLanguage, _ flagView: SelectableItem) {
+        if language == AppLanguage.defaultLanguage {
             activeFlagView = flagView
         }
     }
     
     private func createFlagViews() {
-        for language in Language.allCases {
+        for language in AppLanguage.allCases {
             let flagView = SelectableItem()
             flagView.flagImageView.image = UIImage(named: language.rawValue)
             setDefaultActiveFlagView(language, flagView)
@@ -90,6 +90,7 @@ class LanguageSelectionView: UIView {
             let tapGesture = FlagViewTapGesture(target: self, action: #selector(tapped))
             tapGesture.action = { [weak self] in
                 self?.activeFlagView = flagView
+                AppLocalization.shared.language = language
                 Localizer.shared.changeLanguage.accept(language.rawValue)
             }
             flagView.addGestureRecognizer(tapGesture)
