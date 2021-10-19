@@ -9,8 +9,11 @@ import UIKit
 import RxTheme
 import RxSwift
 import RxCocoa
+import RxLocalizer
 
 class ContainerTabBarController: UITabBarController {
+    
+    let disposeBag = DisposeBag()
     
     override var selectedViewController: UIViewController? {
         willSet {
@@ -28,19 +31,29 @@ class ContainerTabBarController: UITabBarController {
     
     private func setupViewControllers() -> [UIViewController] {
         let categoryVC = CategoriesVC()
-        categoryVC.tabBarItem.title = "Play"
+        
+        
+        Localizer.shared.localized("Play")
+            .drive(categoryVC.tabBarItem.rx.title)
+            .disposed(by: disposeBag)
         categoryVC.tabBarItem.image = UIImage(systemName: "gamecontroller")
         
         let recordsVC = RecordsVC()
-        recordsVC.title = "Records"
+        Localizer.shared.localized("Records")
+            .drive(recordsVC.tabBarItem.rx.title)
+            .disposed(by: disposeBag)
         recordsVC.tabBarItem.image = UIImage(systemName: "rosette")
         
         let shareVC = ShareVC()
-        shareVC.title = "Share"
+        Localizer.shared.localized("Share")
+            .drive(shareVC.tabBarItem.rx.title)
+            .disposed(by: disposeBag)
         shareVC.tabBarItem.image = UIImage(systemName: "personalhotspot")
         
         let cardsVC = CustomCardsVC()
-        cardsVC.title = "Cards"
+        Localizer.shared.localized("Cards")
+            .drive(cardsVC.tabBarItem.rx.title)
+            .disposed(by: disposeBag)
         cardsVC.tabBarItem.image = UIImage(systemName: "greetingcard")
         
         let vcs = [categoryVC, recordsVC, shareVC, cardsVC]

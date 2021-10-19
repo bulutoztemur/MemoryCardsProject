@@ -13,10 +13,5 @@ public class AppLocalization {
     private init() { /* Singleton */ }
 
     public var language = AppLanguage.english
-    public var appSelectedLocale: Locale {
-        if language == .english {
-            return Locale.english
-        }
-        return Locale.turkey
-    }
+
 }

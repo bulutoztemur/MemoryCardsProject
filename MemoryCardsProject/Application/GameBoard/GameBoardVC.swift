@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import RxLocalizer
 
 class GameBoardVC: BaseVC {
     
@@ -42,7 +43,9 @@ class GameBoardVC: BaseVC {
         view.addSubview(collectionView)
         view.addSubview(scoreBoardView)
         navigationItem.viewControllerTag = .askUserForConfirmation
-        navigationItem.title = "Game Board"
+        Localizer.shared.localized("GameBoard")
+            .drive(navigationItem.rx.title)
+            .disposed(by: DisposeBag())
         setupConstraints()
     }
     

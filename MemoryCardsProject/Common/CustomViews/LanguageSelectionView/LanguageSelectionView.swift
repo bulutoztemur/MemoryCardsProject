@@ -9,14 +9,7 @@ import UIKit
 import RxLocalizer
 
 class LanguageSelectionView: UIView {
-        
-    enum Language: String, CaseIterable {
-        case english = "en"
-        case turkish = "tr"
-        
-        static let defaultLanguage: Language = .english
-    }
-    
+            
     private class FlagViewTapGesture: UITapGestureRecognizer {
         var action: () -> Void = {}
     }

@@ -190,6 +190,13 @@ class ProfileSideMenuVC: UIViewController {
         ])
     }
     
+    func resource(dest: UILabel, source: String) {
+        Localizer.shared.localized(source)
+            .drive(dest.rx.text)
+            .disposed(by: disposeBag)
+    }
+
+    
     private func bind() {
         fontSizeSlider.rx.value
             .map { round($0)}
@@ -207,5 +214,6 @@ class ProfileSideMenuVC: UIViewController {
         Localizer.shared.localized("Language")
             .drive(langLabel.rx.text)
             .disposed(by: disposeBag)
+        
     }
 }
