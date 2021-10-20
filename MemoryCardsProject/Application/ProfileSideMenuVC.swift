@@ -143,15 +143,14 @@ class ProfileSideMenuVC: UIViewController {
         view.theme.backgroundColor = themeResource { $0.profileViewBgColor }
         setupView()
         setupConstraints()
+        setProfileImageCornerRadius()
         bind()
-        
+    }
+    
+    private func setProfileImageCornerRadius() {
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
         profileImageCircleBorderView.layer.cornerRadius = profileImageCircleBorderView.frame.width / 2
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
     }
     
     private func setupView() {
@@ -186,7 +185,6 @@ class ProfileSideMenuVC: UIViewController {
             profileImageContainerView.centerYAnchor.constraint(equalTo: profileImageCircleBorderView.centerYAnchor),
             profileImageContainerView.centerXAnchor.constraint(equalTo: profileImageCircleBorderView.centerXAnchor),
             profileImageCircleBorderView.topAnchor.constraint(equalTo: profileImageContainerView.topAnchor),
-            
         ])
     }
     
@@ -195,9 +193,11 @@ class ProfileSideMenuVC: UIViewController {
             .drive(dest.rx.text)
             .disposed(by: disposeBag)
     }
+}
 
-    
-    private func bind() {
+// MARK:- Bindings
+private extension ProfileSideMenuVC {
+    func bind() {
         fontSizeSlider.rx.value
             .map { round($0)}
             .subscribe(onNext: { [weak self] val in
@@ -214,6 +214,5 @@ class ProfileSideMenuVC: UIViewController {
         Localizer.shared.localized("Language")
             .drive(langLabel.rx.text)
             .disposed(by: disposeBag)
-        
     }
 }
