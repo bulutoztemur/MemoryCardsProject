@@ -11,7 +11,9 @@ public enum AppLanguage: String, CaseIterable {
     case english = "en"
     case turkish = "tr"
     
-    static let defaultLanguage: AppLanguage = .english
+    static var language: AppLanguage {
+        GlobalSettings.language
+    }
 
     public func getLocalize() -> String {
         switch self {

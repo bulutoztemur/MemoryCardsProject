@@ -43,7 +43,7 @@ struct DarkTheme: Theme {
     let greenToWhite: UIColor = .systemGreen
 }
 
-enum ThemeType: ThemeProvider {
+enum ThemeType: String, ThemeProvider {
     case light, dark
     var associatedObject: Theme {
         switch self {
@@ -55,7 +55,7 @@ enum ThemeType: ThemeProvider {
     }
 }
 
-let themeService = ThemeType.service(initial: .dark)
+let themeService = ThemeType.service(initial: GlobalSettings.darkModeActive)
 func themeResource<T>(_ mapper: @escaping ((Theme) -> T)) -> Observable<T> {
     return themeService.attrStream(mapper)
 }

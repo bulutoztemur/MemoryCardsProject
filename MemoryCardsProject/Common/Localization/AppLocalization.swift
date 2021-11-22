@@ -12,6 +12,8 @@ public class AppLocalization {
     
     private init() { /* Singleton */ }
 
-    public var language = AppLanguage.english
+    public var language: AppLanguage {
+        AppLanguage.language
+    }
 
 }

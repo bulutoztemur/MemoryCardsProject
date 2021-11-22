@@ -65,7 +65,7 @@ class ProfileSideMenuVC: UIViewController {
     
     var themeSwitch: UISwitch = {
         let themeSwitch = UISwitch()
-        themeSwitch.isOn = true
+        themeSwitch.isOn = themeService.type ==  .dark
         themeSwitch.tintColor = .darkGray
         themeSwitch.onTintColor = .darkGray
         themeSwitch.backgroundColor = .lightGray
@@ -89,6 +89,7 @@ class ProfileSideMenuVC: UIViewController {
         let slider = UISlider()
         slider.minimumValue = 0
         slider.maximumValue = 2
+        slider.setValue(GlobalSettings.fontSize, animated: true)
         slider.isContinuous = false
         slider.theme.thumbTintColor = themeResource { $0.tintColor }
         slider.theme.minimumTrackTintColor = themeResource { $0.tintColor }
@@ -136,6 +137,7 @@ class ProfileSideMenuVC: UIViewController {
     
     @objc func didChangeThemeSwitchValue() {
         themeSwitch.isOn ? themeService.switch(.dark) : themeService.switch(.light)
+        GlobalSettings.darkModeActive = themeService.type
     }
     
     override func viewDidLoad() {
@@ -204,6 +206,7 @@ private extension ProfileSideMenuVC {
                 self?.fontSizeSlider.setValue(val, animated: true)
                 self?.themeLabel.font = Self.fontArrangerValues[Int(val)]
                 self?.langLabel.font = Self.fontArrangerValues[Int(val)]
+                GlobalSettings.fontSize = val
             })
             .disposed(by: disposeBag)
         

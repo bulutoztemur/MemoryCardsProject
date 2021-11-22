@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Localizer.shared.changeLanguage.accept("en")
+        Localizer.shared.changeLanguage.accept(GlobalSettings.language.rawValue)
         return true
     }
 
